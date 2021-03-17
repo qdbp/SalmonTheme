@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>me.enaumov.plugins.salmon</id>
+    <name>Restrained Salmon Theme</name>
+    <version>0.3</version>
+    <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
+
+    <description>
+        <![CDATA[ A light theme using Fancy Color Science (tm). Except for the salmon color -- I ripped that off from FT.]]>
+    </description>
+
+    <change-notes><![CDATA[]]></change-notes>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="191.0"/>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <themeProvider id="21fb80a7-5159-49d7-90f1-32eb94d8c177" path="/Salmon.theme.json"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+</idea-plugin>

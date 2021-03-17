@@ -1,0 +1,49 @@
+{
+  "name": "Salmon",
+  "dark": false,
+  "author": "Evgeny Naumov",
+  "editorScheme": "/RestraintAuto.Night.xml",
+  "colors": {
+    "black": "#000000",
+    "white": "#FFFFFF",
+    "bg_grey": "#E8E8E8",
+    "fg_dark": "#202020",
+    "fg_grey": "#3f3f3f",
+    "fg_light": "#808080",
+    "salmon_dark": "#ccbcad",
+    "salmon": "#F2DFCE",
+    "salmon_hl": "#FFF1E4"
+  },
+  "ui": {
+    "*": {
+      "background": "salmon",
+      "foreground": "black",
+
+      "selectionInactiveBackground": "salmon_dark",
+      "selectionInactiveForeground": "black",
+
+      "selectedBackground": "salmon_hl",
+      "selectedForeground": "black",
+
+      "selectionBackground": "salmon_hl",
+      "selectionForeground": "black",
+
+      "lightSelectionForeground": "black",
+      "lightSelectionBackground": "salmon_hl",
+
+      "hoverForeground": "black",
+      "hoverBackground": "salmon_hl",
+
+      "disabledForeground": "black",
+      "disabledBackground": "salmon",
+
+      "disabledText": "fg_light",
+
+      "FileColor": {
+        "Yellow": "#f2efda",
+        "Green": "#d8f0e2",
+        "Blue": "#d3f0f4"
+      }
+    }
+  }
+}
