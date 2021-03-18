@@ -1,0 +1,179 @@
+meta:
+  name: Salmon
+  author: Evgeny Naumov
+  dark: false
+  scheme: Restraint
+anchors:
+  # these anchors, as well as other colors, reference the colors in the palette produced from colorspec.yaml
+  my_light_bg: &my_light_bg salmon_light
+  my_bg: &my_bg salmon
+  my_dark_bg: &my_dark_bg salmon_dark
+  my_fg: &my_fg black
+  my_light_fg: &my_light_fg fg_dark
+  my_active_color: &my_active_color white
+  my_border_color: &my_border_color snd002
+
+  # disabled elements
+  my_disabled_fg: &my_disabled_fg fg_light
+  my_disabled_bg: &my_disabled_bg bg_dark
+
+  # specialized backgrounds
+  my_input_bg: &my_input_bg shd002
+  my_selected_bg: &my_selected_bg salmon_light
+
+ui:
+
+  Plugins:
+    Button:
+      installBackground: hl002
+      installBorderColor: &plugin_green ult001
+      installForeground: *my_fg
+      installFillBackground: *plugin_green
+      installFillForeground: *my_fg
+      updateForeground: *my_fg
+      updateBackground: hl000
+      updateBorderColor: ult000
+    lightSelectionBackground: *my_light_bg
+    tagBackground: hl001
+    tagForeground: *my_fg
+
+  ComboBox:
+    ArrowButton:
+      disabledIconColor: *my_disabled_fg
+      iconColor: *my_fg
+
+  Borders:
+    color: *my_border_color
+
+  FileColor:
+    Green: hl002
+    Blue: hl000
+    Yellow: hl003
+    Orange: hl004
+    Rose: hl005
+    Violet: hl006
+
+  Link:
+    activeForeground: &my_link tone005
+    hoverForeground: *my_link
+    pressedForeground: *my_link
+    visitedForeground: tone004
+
+  "*":
+    ## BACKGROUNDS
+
+    # Default Backgrounds
+    background: *my_bg
+    inactiveBackground: *my_bg
+    inactiveTitleBackground: *my_bg
+    focusCellBackground: *my_bg
+    floatingBackground: *my_bg
+    nonEditableBackground: *my_bg
+    unselectedBackground: *my_bg
+
+    # Lighter Backgrounds -- highlights and selections
+
+    # active
+    pressedBackground: *my_active_color
+
+    # light
+    activeBackground: *my_light_bg
+    activeTitleBackground: *my_light_bg
+    hoverBackground: *my_light_bg
+    underlinedBackground: *my_light_bg
+
+    # ... selection
+    selected: *my_selected_bg
+    selectedBackground: *my_selected_bg
+    selectionBackground: *my_selected_bg
+    selectedInactiveBackground: *my_selected_bg
+    selectionInactiveBackground: *my_selected_bg
+
+    # Dark Backgrounds -- disabled and inactive
+
+    # ... inactive
+    inactiveColoredFileBackground: *my_bg
+    inactiveColoredTabBackground: *my_bg
+
+    # ... disabled
+    disabledBackground: *my_disabled_bg
+
+    # Gradient Backgrounds
+    startBackground: *my_light_bg
+    endBackground: *my_bg
+
+    # Other background
+    errorBackground: hl005
+    warningBackground: hl005
+
+    ## FOREGROUNDS
+
+    # default
+    foreground: *my_fg
+    light: *my_fg
+    select: *my_fg
+
+    selectionForeground: *my_fg
+    selectedForeground: *my_fg
+    lightSelectionForeground: *my_fg
+
+    acceleratorForeground: *my_fg
+    acceleratorSelectionForeground: *my_fg
+
+    # lighter
+    inactiveForeground: *my_light_fg
+    infoForeground: tone005
+
+    # disabled
+    foregroundInactive: *my_disabled_fg
+    disabledForeground: *my_disabled_fg
+    disabledSelectedForeground: *my_disabled_fg
+    disabledText: *my_disabled_fg
+
+    # other
+    shortcutForeground: *my_link
+
+
+    ## BORDERS
+    # idea: all borders are the same except disabled one, which conform to the
+    # stlying for disabled elements.
+
+    hoverBorderColor: *my_border_color
+    pressedBorderColor: *my_border_color
+    focusedBorderColor: *my_border_color
+    borderColor: *my_border_color
+    startBorderColor: *my_border_color
+    endBorderColor: *my_border_color
+    borderLight: *my_border_color
+    borderShadow: *my_border_color
+    inactiveBorderColor: *my_border_color
+    ContrastBorderColor: *my_border_color
+    windowBorder: *my_border_color
+
+    # disabled
+    disabledBorderColor: *my_disabled_fg
+
+    ## ICONS
+    contentAreaColor: *my_fg
+
+
+icons:
+  ColorPalette:
+    Objects.Grey: *my_light_fg
+    Objects.Red: pri005
+    Objects.Pink: pri005
+    Objects.BlackText: white
+    Objects.Blue: pri000
+    Objects.Yellow: pri003
+    Objects.YellowDark: pri004
+    Objects.Green: pri002
+    Objects.GreenAndroid: pri002
+    Objects.RedStatus: ult004
+    Objects.Purple: pri006
+    Actions.Blue: ult000
+    Actions.Green: ult002
+    Actions.Red: ult004
+    Actions.Yellow: ult003
+    Actions.Grey: *my_fg
+    Actions.GreyInline: *my_fg
+    Actions.GreyInline.Dark: *my_fg

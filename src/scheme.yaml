@@ -1,30 +1,32 @@
 meta:
     parent_scheme: Default
-    name: RestraintAuto
+    name: Restraint
+    ide_version: "2020.3.3.0.0"
 colors:
+    # color names in this configuration reference those in the palette produced from colorspec.yaml
     caret_row_color: white
-    added_lines_color: "#60b998"
+    added_lines_color: hl007
     console_background_key: salmon
     deleted_lines_color: snd003
-    diff_separators_background: "#949a9f"
+    diff_separators_background: fg_light
     documentation_color: bg002
-    gutter_background: bg_grey_dark
+    gutter_background: bg_dark
     ignored_added_lines_border_color: "#60b998"
     ignored_deleted_lines_border_color: "#cc8a8a"
     ignored_modified_lines_border_color: "#69a3c6"
     indent_guide: snd002
-    information_hint: "#d9d9d9"
-    line_numbers_color: snd002
-    tearline_color: snd002
+    information_hint: fg_dark
+    line_numbers_color: tone003
+    tearline_color: tone003
     modified_lines_color: "#69a3c6"
     notification_background: "#2b2710"
     right_margin_color: "#998f86"
     selected_indent_guide: "#778275"
-    visual_indent_guide: fg_grey
+    visual_indent_guide: fg
 attributes:
     text: &text
-        fg: fg_grey
-        bg: bg_grey
+        fg: fg
+        bg: bg
     default_block_comment: &comment
         fg: "#898472"
     default_class_name: &class
@@ -183,7 +185,7 @@ attributes:
         ft: 1
     kotlin_function_literal_braces_and_arrow: *func
     kotlin_instance_property_custom_property_declaration: &property
-        fg: pri001
+        fg: ult004
     kotlin_label:
         base: default_label
     kotlin_mutable_variable:
@@ -206,10 +208,17 @@ attributes:
     py.annotation:
         fg: snd000
     py.decorator: *meta
-    py.predefined_usage:
-        <<: *predefined
-        ft: 0
-    py.self_parameter: *field
+    py.predefined_definition: &py_predefined
+        fg: pri004
+        ft: 1
+    py.predefined_usage: *py_predefined
+    py.self_parameter:
+        fg: pri004
+        ft: 1
+    py.string.u:
+        base: default_string
+    py.string.b:  &bytestring
+        fg: pri001
     search_result_attributes:
         effect_color: "#9b92a0"
         stripe: "#9b92a0"
@@ -244,11 +253,10 @@ attributes:
         fg: "#89393f"
         bg: "#e5c0cb"
     xml_tag_data:
-        fg: fg_grey
-        bg: bg_grey
+        fg: fg
+        bg: bg
     yaml_anchor: *label
-    yaml_scalar_key:
-        fg: black
+    yaml_scalar_key: *field
     default_template_language_color:
         base: text
     default_entity:

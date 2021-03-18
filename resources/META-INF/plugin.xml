@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
-    <version>0.3</version>
+    <version>0.7</version>
     <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
 
     <description>

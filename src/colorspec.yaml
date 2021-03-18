@@ -1,4 +1,4 @@
-name: RestraintAuto
+name: Restraint
 views:
     Night:
         T: 6500
@@ -18,11 +18,16 @@ palette:
         args:
             black: "#000000"
             white: "#ffffff"
-            fg_grey: "#3f3f3f"
+            fg_dark: "#202020"
+            fg: "#3f3f3f"
             fg_light: "#808080"
-            bg_grey: "#e8e8e8"
-            bg_grey_dark: "#d9d9d9"
-            salmon_dark: "#CCBCAD"
+            bg: "#ececec"
+            bg_dark: "#d9d9d9"
+            bg_darker: "#d2d2d2"
+    salmon:
+        type: fixed
+        args:
+            salmon_dark: "#CCC1B7"
             salmon: "#F2DFCE"
             salmon_light: "#FFF1E4"
     ult:
@@ -58,18 +63,26 @@ palette:
             j_ub: 0.45
             m_lb: 4.0
             m_ub: 4.0
+    shd:
+        type: jab_ring
+        args:
+            n_colors: 8
+            j_lb: 0.75
+            j_ub: 0.75
+            m_lb: 3.5
+            m_ub: 3.5
     hl:
         type: jab_ring
         args:
-            n_colors: 6
-            j_lb: 0.83
-            j_ub: 0.83
-            m_lb: 12.0
-            m_ub: 12.0
+            n_colors: 8
+            j_lb: 0.84
+            j_ub: 0.84
+            m_lb: 11.5
+            m_ub: 11.5
     bg:
         type: jab_ring
         args:
-            n_colors: 6
+            n_colors: 8
             j_lb: 0.89
             j_ub: 0.89
             m_lb: 5.0

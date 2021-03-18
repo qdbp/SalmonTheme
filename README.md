@@ -13,18 +13,14 @@ The config files for this theme are included in this repo.
 
 ### Building
 
-First, you need to install `palette_gen`. Then
+First, you need to install `palette_gen`. Then, run
 
-`palette-gen palette <the colorspec config>`
+```shell
+make <night|day>
+```
 
-`palette-gen scheme <the scheme config> <wherever the palette spec was saved>`
-
-`<move/rename the file to the .theme.json reference isn't broken>`
-
-`<build plugin with IDEA>`
-
-The lack of a build system or even any serious attempt at documentation mathematically *guarantees*
-that the produced scheme will be artisanal, hand-crafted hipster magnificence.
+to geherate the `theme.json` and `.xml` color scheme files. After this, build with
+IDEA.
 
 ### Roadmap
 
@@ -32,15 +28,6 @@ Since `palette_gen` supports multiple view settings, being able to dynamically c
 based on lighting conditions, etc., seems like a tantalizing possibility...
 
 ### FAQ
-
-#### Why is the UI so ugly?
-
-First, I made everything some random color that would make my eyes hurt less than the default white
-while I worked on what I actually care about -- the color scheme. This color happened to be similar to
-FT salmon, so I thought, "why the hell not just rip off a newspaper for lulz?". Or so it goes.
-
-The UI might get better eventually, but not by much, since working on it bores me.
-
 
 #### Why not just use Solarized Light?
 
