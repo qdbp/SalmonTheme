@@ -19,9 +19,9 @@ palette:
             black: "#000000"
             white: "#ffffff"
             fg_dark: "#202020"
-            fg: "#3f3f3f"
-            fg_light: "#808080"
-            bg: "#ececec"
+            fg: "#3d3d3d"
+            fg_light: "#707070"
+            bg: "#e8e8e8"
             bg_dark: "#d9d9d9"
             bg_darker: "#d2d2d2"
     salmon:
@@ -42,10 +42,11 @@ palette:
         type: jab_ring
         args:
             n_colors: 8
-            m_lb: 19.0
-            m_ub: 19.0
-            j_lb: 0.445
-            j_ub: 0.445
+            m_lb: 18.0
+            m_ub: 18.0
+            j_lb: 0.44
+            j_ub: 0.44
+            hue_offset: 0.3
     tone:
         type: jab_ring
         args:
@@ -59,10 +60,11 @@ palette:
         type: jab_ring
         args:
             n_colors: 4
-            j_lb: 0.45
-            j_ub: 0.45
-            m_lb: 4.0
-            m_ub: 4.0
+            j_lb: 0.47
+            j_ub: 0.47
+            m_lb: 5.0
+            m_ub: 5.0
+            hue_offset: 0.8
     shd:
         type: jab_ring
         args:
