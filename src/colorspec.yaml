@@ -14,78 +14,63 @@ views:
         bg_hex: "#e8e8e8"
 palette:
     greys:
-        type: fixed
+        type: greys
         args:
-            black: "#000000"
-            white: "#ffffff"
-            fg_dark: "#202020"
-            fg: "#3d3d3d"
-            fg_light: "#707070"
-            bg: "#e8e8e8"
-            bg_dark: "#d9d9d9"
-            bg_darker: "#d2d2d2"
+            white: 0.97
+            bg_light: 0.92
+            bg: 0.90
+            bg_dark: &j_bg_dark 0.80
+            fg_light: 0.35
+            fg: 0.15
+            fg_dark: 0.075
+            black: 0.00
     salmon:
         type: fixed
         args:
             salmon_dark: "#CCC1B7"
             salmon: "#F2DFCE"
             salmon_light: "#FFF1E4"
-    ult:
-        type: jab_ring
-        args:
-            n_colors: 6
-            m_lb: 27.0
-            m_ub: 27.0
-            j_lb: 0.54
-            j_ub: 0.54
     pri:
+        type: tri_hex
+        args:
+            base_j: 0.3
+            pitch: 0.12
+            ring0_name: tone
+            ring1_name: pri
+            ring2_name: ult
+            tints_name: tint
+    shd:
         type: jab_ring
         args:
             n_colors: 8
-            m_lb: 18.0
-            m_ub: 18.0
-            j_lb: 0.44
-            j_ub: 0.44
-            hue_offset: 0.3
-    tone:
-        type: jab_ring
-        args:
-            n_colors: 6
-            j_lb: 0.305
-            j_ub: 0.305
-            m_lb: 13.0
-            m_ub: 13.0
-            hue_offset: 0.5
-    snd:
-        type: jab_ring
-        args:
-            n_colors: 4
-            j_lb: 0.47
-            j_ub: 0.47
-            m_lb: 5.0
-            m_ub: 5.0
-            hue_offset: 0.8
-    shd:
+            j_lb: 0.7
+            j_ub: 0.7
+            m_lb: 3
+            m_ub: 3
+    hl:
         type: jab_ring
         args:
             n_colors: 8
             j_lb: 0.75
             j_ub: 0.75
-            m_lb: 3.5
-            m_ub: 3.5
-    hl:
-        type: jab_ring
-        args:
-            n_colors: 8
-            j_lb: 0.84
-            j_ub: 0.84
             m_lb: 11.5
             m_ub: 11.5
+            hue_offset: &lights_offset 0.2
     bg:
         type: jab_ring
         args:
             n_colors: 8
-            j_lb: 0.89
-            j_ub: 0.89
-            m_lb: 5.0
-            m_ub: 5.0
+            j_lb: *j_bg_dark
+            j_ub: *j_bg_dark
+            m_lb: 4.0
+            m_ub: 4.0
+            hue_offset: *lights_offset
+    wht:
+        type: jab_ring
+        args:
+            n_colors: 8
+            j_lb: 0.885
+            j_ub: 0.885
+            m_lb: 3.0
+            m_ub: 3.0
+            hue_offset: *lights_offset

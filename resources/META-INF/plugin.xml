@@ -1,17 +1,29 @@
 <idea-plugin>
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
-    <version>0.7</version>
+    <version>0.10</version>
     <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
 
     <description>
         <![CDATA[ A light theme using Fancy Color Science (tm). Except for the salmon color -- I ripped that off from FT.]]>
     </description>
 
-    <change-notes><![CDATA[]]></change-notes>
+    <change-notes><![CDATA[
+        <ul><li>Version 0.10 -- stabilization candidate for 1.0
+            <ul>
+                <li>theme: fixed contrast-less text fields, info boxes, etc.</li>
+                <li>theme: replaced the salmon color with more muted version</li>
+                <li>scheme: more muted literals</li>
+                <li>scheme: more visible documentation comments</li>
+                <li>scheme: disable all underlining</li>
+                <li>palette: richer highlight colors</li>
+                <li>palette: larger primary palette with TriHex solver</li>
+            </ul></li>
+        </ul>
+    ]]></change-notes>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="191.0"/>
+    <idea-version since-build="203.0"/>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->

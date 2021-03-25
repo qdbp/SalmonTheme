@@ -19,10 +19,9 @@ high-level layout concerns propagate automatically to all relevant elements.
 
 ## The Salmon Theme
 
-Not much to be said for this one: the FT salmon, everywhere, for all time. I
-tried to make it as uniform as possible to minimise visual distractions.
-Non-salmon accent colors, such as for the icons, are generated jointly with
-those for the color scheme for maximum harmony.
+Originally this theme used the FT salmon color directly. Now, it's only loosely
+inspired by it -- but the name stays. All theme colors are generated jointly
+from the scheme colors from the same palette spec for maximum harmony.
 
 The effect is to create a clear division into exactly two areas: the grey editor
 field, and the reddish, "calming" UI field outside it. Adaptation to the reddish
@@ -35,44 +34,46 @@ This is the interesting bit, designed with all the color science, etc, blah blah
 blah, see
 [palette_gen](https://github.com/qdbp/palette_gen).
 
-As a scheme for programming vs. just as a finger-painting exercise, I attempt to
-design a uniform visual language that
-(I conjecture) will allow one to code faster once one internalizes it.
-Specifically:
+The name suggests muted colors, which is necessary for a light scheme to avoid
+retinal destruction. Function delcarations, identifiers and keywords are
+greyscale to further this effect.
 
-The design elements below are interpreted as gentle guidelines and are not
-followed whenever the result is fugly.
+### Design Language
 
-Finally, as the name implies -- and as necessitated by a light theme that is not
-intended for mass retinal destruction -- the colors used are muted. Some
-type-level colors, in particular, are close to the default text color since
-distinguishability of type- and inhabitant-level entities is generally not an
-issue.
+Further to trying for restrained colors, I attempt to follow a visual design
+language, outlined in this section. Its dictates are interpreted as gentle
+guidelines and are not followed whenever the result is fugly.
 
-#### Font Style Signals Control Flow + Scope
+#### Bold Is Control Flow
 
-- bold is reserved for keywords and control flow
-- italics are reserved for mutability where sensible (I don't, e.g., make
-  everything italic in Python, though I will if the Rust Moral Foundation /
-  Haskell Ivory Tower Institute give me money)
-- global scope is signalled by underlines
-- static scope is signalled by underdots
+The only things that are bold are keywords, function calls and any other
+language construct -- modulo my ability to select it for highlighting -- that
+alters control flow. Nothing else is bold: not declarations, not global
+variables, etc.
 
-## Font Color Signals Ownership + Type
+I believe this creates a very nice effect where when glancing at a block of code
+its structure and the functions it calls jump out to give a high-level
+impression of what it does, before you become aware of the specific identifiers
+involved.
 
-I do not enumerate specific colors here since those can be revised. In general,
-color signals distinctions between:
+#### Italics are Mutability
 
-- local variables
-- members
-- parameters
-- captures
-- nonlocals
-- classes, interfaces, and type variables
-- string, numerical and other literals
+Wherever sensible, mutable variables or mutation in general are denoted by
+italics. This is interpreted sensibly, in that I don't, for instance, make every
+variable in Python or every non-final variable in Java italic.
 
-To the extent the coloring rules are redundant with the font style rules, the
-font styling is omitted to minimize visual clutter.
+However, in Java I italicize variables that are reassigned, and so on.
+
+#### Color Is Role
+
+Generally, lower-brightness colors are used for type variables and literals.
+Colors of medium brightness are used for various mundane identifiers, while the
+brightest colors are reserved for global concepts such as labels, constants, and
+builtins.
+
+Within each class, colors are assigned to taste.
+
+## Installation
 
 First, you need to install `palette_gen`. Then, run
 
@@ -88,32 +89,3 @@ with IDEA.
 Since `palette_gen` supports multiple view settings, being able to dynamically
 change the color scheme based on lighting conditions, etc., seems like a
 tantalizing possibility...
-
-## FAQ
-
-### Why "Restraint"?
-
-I wanted to go back to the elegance of LaTeX-set pseudocode, and otherwise have
-a minimum of "gaudy skittles bag"-style highly saturated bright colors. To this
-end, I decided that, foundationally
-
-- keywords are bold black
-- identifiers are off-black
-- function/method calls are bold black, same as identifiers
-
-The last design point in particular, as well as withholding boldness from
-anything that does not affect control flow, makes the structure of a function
-just pop out. I believe it's a solid foundation.
-
-The rest of the scheme grew around the above decisions, guided by the idea of
-staying "restrained", using lower saturation and darker tones for contrast.
-
-### Why not just use Solarized Light?
-
-The time we have on this Earth is fleeting, and just about any course of action
-we take is sure to leave us, as we die, with misgivings, regrets, and an
-overwhelming sense of gnawing doubt. One thing which I decided I absolutely do
-not want to regret as I die is not having spent enough time pimping out my IDE
-color scheme to the utmost of my ability. Obviously, using a canned color scheme
-is completely antithetical to this goal, no matter how much easier and better it
-might be than my own ramshackle handiwork.

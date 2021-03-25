@@ -13,76 +13,87 @@ anchors:
         effect_props:
             underlined: &underlined 1
             underwaved: &underwaved 2
-            underdots: &underdots 5
+            underdots: 5
             bordered: &bordered 6
         # never enough pointers!
         indirection:
             my_fg: &my_fg fg_dark
+            my_fg_light: &my_fg_light fg_light
 
     ## DESIGN LANGUAGE
     # marks static fields, where such a distinction is ready and useful
-    static_referent_mixin: &static_referent_mixin
-        effect: *underdots
-        effect_color: *my_fg
+    static_referent_mixin: &static_referent_mixin { }
+      # effect: *underdots
+    # effect_color: *my_fg
     # marks global fields -- use sparingly, only when the "nonlocal" color does not
     # distinguish between globals and intervening scope well enough
-    global_referent_mixin: &global_referent_mixin
-        effect: *underlined
-        effect_color: *my_fg
+    global_referent_mixin: &global_referent_mixin { }
+      # effect: *underlined
+    # effect_color: *my_fg
+
     mutable_ft_mixin: &mutable_ft_mixin
         ft: *italic
     control_flow_ft_mixin: &control_flow_ft_mixin
         ft: *bold
 
-    # primary palette -- down the jab spectrum in decreasing "locality/atomicity/control"
-    # first, builtins > globals > fields > params > captures > (locals, just plain grey)
-    # then literals, from "wide/accessible/complex" to "narrow/atomic"
-    # string > chars > numbers
-    # This is loosey-goosey since we're language agnostic.
-    # We go by feel and vibe.
-    # Also, builtins are close to numbers once more, we close the circle, because...
-    # uh... it's all just numbers in the compiler... yeah. Bruh.
-    my_builtin_color: &my_builtin_color pri007
-    my_nonlocal_color: &my_nonlocal_color pri006
-    my_member_color: &my_field_col pri005
-    my_param_color: &my_param_color pri004
-    my_capture_color: &my_capture_color pri003
-    # local color is just default text, for our eye health
-    my_string_color: &my_string_color pri002
-    # doubles as "constant" color
-    my_char_color: &my_char_color pri001
-    my_number_color: &my_number_color pri000
+    # 6 highest-colorfulness colors: global/nonlocal ideas
+    my_builtin_color: &my_builtin_color ult_5
+    my_nonlocal_color: &my_nonlocal_color ult_0
+    my_label_color: &my_label_color ult_1
+    my_constant_color: &my_constant_color ult_4
 
-    # also used for escapes or other local transformations like formatting
-    # it's an ultra -- use sparingly
-    my_preproc_color: &my_preproc_color ult002
+    # 6 medium-colorfulness colors: local/bound ideas
+    # (generic local var is grey)
+    my_static_color: &my_static_color pri_0
+    my_member_color: &my_field_col pri_1
+
+    my_capture_color: &my_capture_color pri_4
+    my_param_color: &my_param_color pri_5
+
+    # 6 low-colorfulness colors literal ideas
+    my_string_color: &my_string_color tone_3
+    my_char_color: &my_char_color tone_4
+    my_number_color: &my_number_color tone_5
+
+    # backgrounds
+    my_info_fg: bg_7
+    my_active_fg: bg_5
+
+    ## SPECIAL TEXT
+    injected: &injected
+        bg: bg_6
+    link: &link
+        fg: pri_5
+        effect: *underlined
+        effect_color: pri_5
+    link_followed: &link_followed
+        fg: pri_0
+        effect: *underlined
+        effect_color: pri_0
 
     ## LANGUAGE PRIMITIVES
     text: &text
         fg: *my_fg
         bg: bg
     comment: &comment
-        fg: snd002
+        fg: *my_fg_light
     doc: &doc
-        <<: *comment
+        fg: tint_3
         ft: *bold
     doc_tag: &doc_tag
-        fg: snd000
+        fg: tint_5
     doc_markup: &doc_markup
-        fg: snd002
+        fg: tint_1
     punctuation: &punctuation
         <<: *text
     label: &label
-        fg: ult003
+        fg: *my_label_color
         ft: *bold
     keyword: &keyword
         fg: black
         ft: *bold
     metadata: &metadata
-        fg: tone004
-    metadata_bold: &metadata_bold
-        <<: *metadata
-        ft: *bold
+        fg: tone_1
 
     ## IDENTIFIERS
     # builtins
@@ -90,7 +101,7 @@ anchors:
         fg: *my_builtin_color
         <<: *global_referent_mixin
     constant: &constant
-        fg: *my_char_color
+        fg: *my_constant_color
 
     # literals
     number: &number
@@ -101,16 +112,16 @@ anchors:
         fg: *my_string_color
 
     # types and classes; have their own "class-like" tone palette
-    object: &object
-        fg: &my_object_color tone002
     type_param: &type_param
         fg: *my_param_color
-    class: &class
-        fg: &my_class_color tone005
-    abstract_class: &abstract_class
-        fg: &my_abstract_class_color tone000
     interface: &interface
-        fg: &my_interface_color tone001
+        fg: tone_3
+    abstract_class: &abstract_class
+        fg: tone_4
+    class: &class
+        fg: &my_class_color tone_5
+    object: &object
+        fg: tone_2
 
     # variables
     global_var: &global_var
@@ -141,7 +152,7 @@ anchors:
     field: &field
         fg: *my_field_col
     static_field: &static_field
-        fg: *my_field_col
+        fg: *my_static_color
         <<: *static_referent_mixin
     # a property is a field with control flow -- field color, but bold in our language.
     property: &property
@@ -152,16 +163,16 @@ anchors:
     # diffs
     diffs:
         bg_error: &bg_err
-            bg: &my_err_col hl005
+            bg: &my_err_col hl_2
         bg_mod:
-            bg: &my_mod_col hl000
+            bg: &my_mod_col hl_7
         bg_new:
-            bg: &my_new_col hl002
+            bg: &my_new_col hl_5
         bg_del:
-            bg: &my_del_col shd007
+            bg: &my_del_col fg_light
 
     errors:
-        err_stripe_color: &my_err_stripe_col ult004
+        err_stripe_color: &my_err_stripe_col ult_1
 
         striped_err: &striped_err
             bg: *my_err_col
@@ -176,40 +187,44 @@ anchors:
             bg: *my_del_col
             stripe: *my_del_col
 
-        warn_stripe_color: &my_warn_stripe_col ult003
-        my_weak_warn_color: &my_weak_warn_col shd003
+        warn_stripe_color: &my_warn_stripe_col ult_2
+        my_weak_warn_color: &my_weak_warn_col tint_4
         striped_warn: &striped_warn
-            bg: hl003
+            bg: hl_3
             stripe: *my_warn_stripe_col
 
     ide:
         # under_caret
-        under_caret: &under_caret_col hl000
-        under_caret_write: &under_caret_write_col hl002
+        under_caret: &under_caret_col hl_7
+        under_caret_write: &under_caret_write_col hl_5
 
         ## IDE Style
-        my_active_color: &my_active_col white
-        my_ide_bg: &my_ide_bg salmon
+        my_active_color: &my_active_col bg_light
+        my_console_bg: &my_console_bg bg
+        my_ide_bg: &my_ide_bg bg_dark
         my_dark_bg: &my_dark_bg bg_dark
 
         # line numbers, visual guides, etc.
-        my_nav_dark: &my_nav_dark tone003  # striking
-        my_nav_light: &my_nav_light snd002  # unobtrusive
+        my_nav_dark: &my_nav_dark tone_1  # striking
+        my_nav_light: &my_nav_light fg_light  # unobtrusive
 
 colors:
     # color names in this configuration reference those in the palette produced from colorspec.yaml
     # diff colors
     # TODO variables
     added_lines_color: *my_new_col
-    ignored_added_lines_border_color: *my_new_col
     deleted_lines_color: *my_del_col
-    ignored_deleted_lines_border_color: *my_del_col
     modified_lines_color: *my_mod_col
-    ignored_modified_lines_border_color: *my_mod_col
-    border_lines_color: *my_nav_dark
+
+    ignored_added_lines_border_color: ult_3
+    ignored_deleted_lines_border_color: ult_1
+    ignored_modified_lines_border_color: ult_5
+
+    # TODO clobbers deleted borders... bug?
+    # border_lines_color: *my_nav_dark
 
     # "theme like" backgrounds
-    console_background_key: *my_ide_bg
+    console_background_key: *my_console_bg
     notification_background: *my_ide_bg
 
     caret_row_color: *my_active_col
@@ -222,21 +237,29 @@ colors:
     right_margin_color: *my_nav_light
     line_numbers_color: *my_nav_light
     line_number_on_caret_row_color: *my_nav_dark
-    tearline_color: *my_nav_dark
-    visual_indent_guide: *my_nav_dark
+    tearline_color: *my_nav_light
+    visual_indent_guide: *my_nav_light
 
-    folded_text_border_color: { bg: &folded_color snd003 }
+    folded_text_border_color: { bg: &folded_color shd_0 }
 
     # debugger
     debug_exe_color: &my_debug_exe_col hl004
     debug_brk_color: &my_debug_brk_col hl005
 
     # TODO misc
-    diff_separators_background: fg_light
+    diff_separators_background: *my_fg_light
     documentation_color: bg002
 
 attributes:
     ### ALL LANGUAGES
+
+    ## SPECIAL TEXT
+    hyperlink_attributes: *link
+    followed_hyperlink_attributes: *link_followed
+
+    default_template_language_color: *injected
+
+
     ## LANGUAGE PRIMITIVES
     text: *text
 
@@ -313,14 +336,13 @@ attributes:
     default_metadata: *metadata
 
     # markup + declarative
+    default_tag: *text
     default_attribute:
         <<: *parameter
         ft: *bold
     default_entity:
         <<: *property
         ft: *bold
-    default_template_language_color:
-        bg: bg003
 
     ## CODE ASSIST
 
@@ -340,7 +362,7 @@ attributes:
     typo:
         <<: *weak_warning
         effect: *bordered
-        effect_color: snd003
+        effect_color: shd_5
 
     not_used_element_attributes:
         <<: *weak_warning
@@ -350,7 +372,7 @@ attributes:
     wrong_references_attributes: *striped_err
 
     todo_default_attributes:
-        fg: ult000
+        fg: tint_0
         ft: *bold_italic
         # TODO standardize weak/strong stripes
         stripe: *my_weak_warn_col
@@ -371,19 +393,20 @@ attributes:
         ft: *bold
 
     folded_text_attributes: { bg: *folded_color }
-    injected_language_fragment: { bg: bg003 }
-    inline_parameter_hint_current: { fg: shd002 }
+    injected_language_fragment: { bg: *injected }
+    inline_parameter_hint_current: *comment
+    inline_parameter_hint_highlighted: { fg: *my_nav_dark }
 
     # search
     search_result_attributes:
-        effect_color: hl007
-        stripe: hl007
+        effect_color: hl_7
+        stripe: hl_7
     text_search_result_attributes:
-        bg: hl003
-        stripe: hl003
+        bg: hl_4
+        stripe: hl_4
     write_search_result_attributes:
-        bg: hl002
-        stripe: hl002
+        bg: hl_5
+        stripe: hl_5
 
     # debugger
     executionpoint_attributes:
@@ -392,7 +415,7 @@ attributes:
     breakpoint_attributes: { bg: *my_debug_brk_col, stripe: *my_debug_brk_col }
     evaluated_expression_attributes: { bg: *my_debug_exe_col }
     debugger_inlined_values_modified: { fg: ult003 }
-    debugger_inlined_values: { fg: snd003 }
+    debugger_inlined_values: { fg: shd_2 }
 
     # java
     annotation_name_attributes: *metadata
@@ -428,7 +451,7 @@ attributes:
         <<: *field
         <<: *mutable_ft_mixin
     kotlin_extension_property:
-        <<: *property
+        <<: *static_field
         <<: *static_referent_mixin
     kotlin_package_property_custom_property_declaration: *global_var
     kotlin_package_property:
@@ -461,13 +484,11 @@ attributes:
     kotlin_label: *label
     # make these less visually in the way
     # these are modifiers -- treat as metadata, with a nod to keyword status with bold
-    kotlin_builtin_annotation: &ktmod
-        <<: *doc
-        ft: *bold
-        # <<: *metadata
-        # ft: *bold
-    kotlin_keyword_var: *ktmod
-    kotlin_keyword_val: *ktmod
+    # kotlin_builtin_annotation: &ktmod
+    #     fg: *fg_unobtrusive
+    #     ft: *bold
+    # kotlin_keyword_var: *ktmod
+    # kotlin_keyword_val: *ktmod
     # types
     kotlin_object: *object
     kotlin_constructor: *call_constructor
@@ -494,7 +515,7 @@ attributes:
         <<: *metadata
         ft: *control_flow_ft_mixin
     py.predefined_definition: &py_predefined
-        <<: *field
+        <<: *static_field
     # not all predefined members are control flow, but they are all special enough to have us "highlight"
     # when they are touched.
     py.predefined_usage:
