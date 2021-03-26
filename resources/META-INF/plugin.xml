@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
-    <version>0.10</version>
+    <version>0.11</version>
     <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
 
     <description>
@@ -9,8 +9,14 @@
     </description>
 
     <change-notes><![CDATA[
-        <ul><li>Version 0.10 -- stabilization candidate for 1.0
-            <ul>
+        <ul>
+            <li>Version 0.11 -- palette fixes<ul>
+                <li>palette: remove broken ab offset to get proper temperature color shift</li>
+                <li>palette: deepen and saturate primary color collection</li>
+                <li>scheme: add javascript styling</li>
+                <li>scheme: color balancing progress, not final yet</li>
+            </ul></li>
+            <li>Version 0.10 -- stabilization candidate for 1.0<ul>
                 <li>theme: fixed contrast-less text fields, info boxes, etc.</li>
                 <li>theme: replaced the salmon color with more muted version</li>
                 <li>scheme: more muted literals</li>

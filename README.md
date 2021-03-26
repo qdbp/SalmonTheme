@@ -64,14 +64,27 @@ variable in Python or every non-final variable in Java italic.
 
 However, in Java I italicize variables that are reassigned, and so on.
 
-#### Color Is Role
+#### Color Is Semantics
+
+The most important fact about colors in this theme is that they have global,
+cross-language semantics. Each color is assigned a specific meaning such as,
+namespace, global variable, interface, number, etc. This color is then used as
+exclusively as possible in this role across languages.
+
+These interpretations, of course, have to be stretched depending on the
+particular language; however, I always aim to keep the meanings as true as
+possible.
 
 Generally, lower-brightness colors are used for type variables and literals.
 Colors of medium brightness are used for various mundane identifiers, while the
 brightest colors are reserved for global concepts such as labels, constants, and
-builtins.
+builtins. Within each of these categories, colors are assigned so as to try make
+as many languages look as pleasing as possible given the semantic consistency
+constraint.
 
-Within each class, colors are assigned to taste.
+The perceptual uniformity of the primary colors ensures that even within this
+framework, for any given language the balance of tones looks rather nice, if not
+the best it could if colors had free per-language semantics.
 
 ## Installation
 

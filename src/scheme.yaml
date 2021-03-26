@@ -21,47 +21,52 @@ anchors:
             my_fg_light: &my_fg_light fg_light
 
     ## DESIGN LANGUAGE
-    # marks static fields, where such a distinction is ready and useful
+    # marks static fields, where such a distinction is useful
     static_referent_mixin: &static_referent_mixin { }
-      # effect: *underdots
-    # effect_color: *my_fg
-    # marks global fields -- use sparingly, only when the "nonlocal" color does not
-    # distinguish between globals and intervening scope well enough
+
+    # marks global fields, where such a distinction is useful
     global_referent_mixin: &global_referent_mixin { }
-      # effect: *underlined
-    # effect_color: *my_fg
 
     mutable_ft_mixin: &mutable_ft_mixin
         ft: *italic
     control_flow_ft_mixin: &control_flow_ft_mixin
         ft: *bold
 
-    # 6 highest-colorfulness colors: global/nonlocal ideas
-    my_builtin_color: &my_builtin_color ult_5
-    my_nonlocal_color: &my_nonlocal_color ult_0
-    my_label_color: &my_label_color ult_1
-    my_constant_color: &my_constant_color ult_4
+    # (ultras) highest-colorfulness colors: global/nonlocal/builtin ideas
+    my_namespace_color: &my_namespace_color ult_0
+    my_metadata_color: &my_metadata_color ult_1
+    my_label_color: &my_label_color ult_2
+    my_preproc_color: ult_3
+    my_constant_color: &my_constant_color ult_5
+    my_builtin_color: &my_builtin_color ult_4
 
-    # 6 medium-colorfulness colors: local/bound ideas
-    # (generic local var is grey)
-    my_static_color: &my_static_color pri_0
-    my_member_color: &my_field_col pri_1
+    # lowest-saturation: identifiers (generic local var is grey)
+    my_nonlocal_color: &my_nonlocal_color tone_0
+    my_static_color: &my_static_color tone_1
+    my_member_color: &my_field_color tone_2
+    my_special_member_color: &my_special_member_color tone_3
+    my_capture_color: &my_capture_color tone_3
+    my_param_color: &my_param_color tone_5
 
-    my_capture_color: &my_capture_color pri_4
-    my_param_color: &my_param_color pri_5
+    # literals lower-colorfulness colors: literal ideas + type-level ideas
+    my_string_color: &my_string_color pri_2
+    my_char_color: &my_char_color tone_3
+    my_number_color: &my_number_color pri_4
 
-    # 6 low-colorfulness colors literal ideas
-    my_string_color: &my_string_color tone_3
-    my_char_color: &my_char_color tone_4
-    my_number_color: &my_number_color tone_5
+    # (tones) (again) type-level ideas
+    my_enum_color: &my_enum_color pri_1
+    my_object_color: &my_object_color pri_2  # object in the Kotlin sense -- singleton
+    my_interface_color: &my_interface_color pri_3
+    my_abstract_class_color: &my_abstract_class_color pri_4
+    my_class_color: &my_class_color pri_5
 
     # backgrounds
     my_info_fg: bg_7
     my_active_fg: bg_5
 
     ## SPECIAL TEXT
-    injected: &injected
-        bg: bg_6
+    injected: &injected {bg: bg_6}
+    injected_re: &injected_re {bg: bg_5}
     link: &link
         fg: pri_5
         effect: *underlined
@@ -93,7 +98,8 @@ anchors:
         fg: black
         ft: *bold
     metadata: &metadata
-        fg: tone_1
+        fg: *my_metadata_color
+    namespace: &namespace {fg: *my_namespace_color}
 
     ## IDENTIFIERS
     # builtins
@@ -111,17 +117,17 @@ anchors:
     string: &string
         fg: *my_string_color
 
-    # types and classes; have their own "class-like" tone palette
+    # types and classes
     type_param: &type_param
         fg: *my_param_color
     interface: &interface
-        fg: tone_3
+        fg: *my_interface_color
     abstract_class: &abstract_class
-        fg: tone_4
+        fg: *my_abstract_class_color
     class: &class
-        fg: &my_class_color tone_5
+        fg: *my_class_color
     object: &object
-        fg: tone_2
+        fg: *my_object_color
 
     # variables
     global_var: &global_var
@@ -129,6 +135,7 @@ anchors:
     mutable_var: &mutable_var
         <<: *text
         <<: *mutable_ft_mixin
+    # function stuff
     # function declarations and references are black -- kind of like latent keywords.
     func: &func
         fg: black
@@ -136,21 +143,25 @@ anchors:
     call: &call
         fg: black
         ft: *bold
+    decorator: &decorator
+        <<: *metadata
+        <<: *control_flow_ft_mixin
+
     closure: &closure
         fg: *my_capture_color
     parameter: &parameter
         fg: *my_param_color
     enum: &enum
-        <<: *constant
+        fg: *my_enum_color
     # control flow transfer -> bold; making a class -> class color
     call_constructor: &call_constructor
         fg: *my_class_color
         ft: *bold
     # "capture" color just to make it more unique... playing it easy with the "rules"
     this: &this
-        fg: *my_capture_color
+        fg: *my_special_member_color
     field: &field
-        fg: *my_field_col
+        fg: *my_field_color
     static_field: &static_field
         fg: *my_static_color
         <<: *static_referent_mixin
@@ -188,7 +199,7 @@ anchors:
             stripe: *my_del_col
 
         warn_stripe_color: &my_warn_stripe_col ult_2
-        my_weak_warn_color: &my_weak_warn_col tint_4
+        my_weak_warn_color: &my_weak_warn_col tint_2
         striped_warn: &striped_warn
             bg: hl_3
             stripe: *my_warn_stripe_col
@@ -201,7 +212,7 @@ anchors:
         ## IDE Style
         my_active_color: &my_active_col bg_light
         my_console_bg: &my_console_bg bg
-        my_ide_bg: &my_ide_bg bg_dark
+        my_ide_bg: &my_ide_bg bg_3
         my_dark_bg: &my_dark_bg bg_dark
 
         # line numbers, visual guides, etc.
@@ -229,7 +240,7 @@ colors:
 
     caret_row_color: *my_active_col
     gutter_background: *my_dark_bg
-    information_hint: fg_dark
+    information_hint: *my_ide_bg
 
     # nav info
     indent_guide: *my_nav_light
@@ -243,12 +254,12 @@ colors:
     folded_text_border_color: { bg: &folded_color shd_0 }
 
     # debugger
-    debug_exe_color: &my_debug_exe_col hl004
-    debug_brk_color: &my_debug_brk_col hl005
+    debug_exe_color: &my_debug_exe_col hl_3
+    debug_brk_color: &my_debug_brk_col hl_2
 
     # TODO misc
     diff_separators_background: *my_fg_light
-    documentation_color: bg002
+    documentation_color: *my_ide_bg
 
 attributes:
     ### ALL LANGUAGES
@@ -307,8 +318,7 @@ attributes:
 
     default_string: *string
     default_valid_string_escape: &string_escape
-        <<: *string
-        ft: *bold
+        fg: *my_char_color
     default_invalid_string_escape:
         <<: *string_escape
         <<: *bg_err
@@ -360,9 +370,9 @@ attributes:
         effect: *underwaved
         effect_color: *my_weak_warn_col
     typo:
-        <<: *weak_warning
+        stripe: &my_typo_color shd_5
         effect: *bordered
-        effect_color: shd_5
+        effect_color: *my_typo_color
 
     not_used_element_attributes:
         <<: *weak_warning
@@ -372,10 +382,10 @@ attributes:
     wrong_references_attributes: *striped_err
 
     todo_default_attributes:
-        fg: tint_0
+        fg: tint_1
         ft: *bold_italic
         # TODO standardize weak/strong stripes
-        stripe: *my_weak_warn_col
+        stripe: shd_2
 
     # navigation
     identifier_under_caret_attributes:
@@ -437,6 +447,27 @@ attributes:
         ft: *ft_none
     type_parameter_name_attributes: *type_param
 
+    # JS
+    js.module_name: *namespace
+    js.instance_member_function:
+        <<: *field
+        <<: *control_flow_ft_mixin
+    js.decorator: *decorator
+    js.local_function: *call
+    js.global_function:
+        <<: *static_field
+        <<: *control_flow_ft_mixin
+    js.global_variable: {base: default_global_variable}
+    js.local_variable: {base: default_local_variable}
+    js.parameter: *parameter
+    js.regexp:
+        <<: *string_escape
+        <<: *injected_re
+    js.type_alias: *class
+    js.primitive.type: *class
+    # TODO handle this new mixed case crap...
+    # javascript:injected_language_fragment: {base: injected_language_frament}
+
     # KOTLIN
     # variables
     kotlin_mutable_variable: *mutable_var
@@ -463,7 +494,6 @@ attributes:
         <<: *control_flow_ft_mixin
     kotlin_variable_as_function_like:
         <<: *control_flow_ft_mixin
-
     kotlin_function_literal_braces_and_arrow: *call
     kotlin_dynamic_function_call:
         <<: *call
@@ -473,11 +503,13 @@ attributes:
         <<: *mutable_ft_mixin
     kotlin_package_function_call:
         <<: *call
-        # no need for underline, non-prefixed calls that are not var-highlighted
-        # should be assumed global or otherwise clear
     kotlin_extension_function_call:
         <<: *call
         <<: *static_referent_mixin
+    # ${} escapes are control flow -- we suffer non-calls to be bolded as collateral damage
+    kotlin_string_escape:
+        <<: *string_escape
+        <<: *control_flow_ft_mixin
     # punctuation/annotations
     kotlin_exclexcl: *call
     kotlin_quest: *class
@@ -511,9 +543,7 @@ attributes:
     # callable. With this, and with deference to existing style ideas, we keep builtins a nice bold purple
     py.builtin_name: *builtin
     # decorators are control flow
-    py.decorator:
-        <<: *metadata
-        ft: *control_flow_ft_mixin
+    py.decorator: *decorator
     py.predefined_definition: &py_predefined
         <<: *static_field
     # not all predefined members are control flow, but they are all special enough to have us "highlight"
@@ -524,9 +554,21 @@ attributes:
     py.self_parameter: *this
     py.string.u: *string
     py.string.b: *bytestring
+    # SQL
+    sql_database_object: *builtin
+    sql_procedure:
+        fg: *my_static_color
+        <<: *control_flow_ft_mixin
+    sql_schema: *interface
     # MARKUP
     # XML
     xml_tag_data: *text
+    # XPATH
+    xpath.keyword:
+        base: default_keyword
+    xpath.function:
+        base: default_function_call
+    xpath.xpath_name: *static_field
     # YAML
     yaml_anchor: *label
     yaml_scalar_key: *keyword
