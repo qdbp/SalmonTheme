@@ -1,21 +1,9 @@
 # Restrained Salmon
 
-## Introduction
+![aesthetic perfection](examples/salmon_6000k.png)
 
 Now that dark mode is sweeping the world, true hipsters must migrate to using
 light themes. This is one such theme.
-
-To bring the user financial prosperity, the UI's principal color is that of FT.
-However, that is not the real interesting bit here. What is, is the declarative
-color scheme generation using fancy color science.
-
-That is done using the sister
-project [palette_gen](https://github.com/qdbp/palette_gen)
-
-The config files for this theme are included in this repo: `colorspec.yaml`
-, `scheme.yaml`, and `theme.yaml`. I have tried to make these declarative
-specifications as DRY as possible, allowing changes to colour specification or
-high-level layout concerns propagate automatically to all relevant elements.
 
 ## The Salmon Theme
 
@@ -24,18 +12,19 @@ inspired by it -- but the name stays. All theme colors are generated jointly
 from the scheme colors from the same palette spec for maximum harmony.
 
 The effect is to create a clear division into exactly two areas: the grey editor
-field, and the reddish, "calming" UI field outside it. Adaptation to the reddish
-surrounding tint makes the editor look cooler than it would under ambient
-monitor temperature settings, which I think is a nice effect.
+field, and the reddish, "calming" UI field outside it. Yes -- the interior in
+that screenshot is a grey, generated for 6000K. It might look very redshifted in
+the context of a white screen, but once your eyes adapt (and assuming your view
+conditions match those for which the theme was generated -- a dim room)
+it will look neutral. Chromatic adaptation is a hell of a drug.
 
 ## The Restraint Scheme
 
-This is the interesting bit, designed with all the color science, etc, blah blah
-blah, see
+This is the interesting bit, designed with all the power of
 [palette_gen](https://github.com/qdbp/palette_gen).
 
 The name suggests muted colors, which is necessary for a light scheme to avoid
-retinal destruction. Function delcarations, identifiers and keywords are
+retinal destruction. Function declarations, default identifiers and keywords are
 greyscale to further this effect.
 
 ### Design Language
@@ -51,18 +40,16 @@ language construct -- modulo my ability to select it for highlighting -- that
 alters control flow. Nothing else is bold: not declarations, not global
 variables, etc.
 
-I believe this creates a very nice effect where when glancing at a block of code
-its structure and the functions it calls jump out to give a high-level
-impression of what it does, before you become aware of the specific identifiers
-involved.
+I believe this creates a very nice effect. Glancing at a block of, its structure
+and its calls visually pop! to give a high-level impression at a glance, without
+being crowded out by identifier specifics.
 
 #### Italics are Mutability
 
 Wherever sensible, mutable variables or mutation in general are denoted by
 italics. This is interpreted sensibly, in that I don't, for instance, make every
-variable in Python or every non-final variable in Java italic.
-
-However, in Java I italicize variables that are reassigned, and so on.
+variable in Python or every non-final variable in Java italic. However, in Java
+I italicize variables that are reassigned, and so on.
 
 #### Color Is Semantics
 
@@ -78,8 +65,8 @@ possible.
 Generally, lower-brightness colors are used for type variables and literals.
 Colors of medium brightness are used for various mundane identifiers, while the
 brightest colors are reserved for global concepts such as labels, constants, and
-builtins. Within each of these categories, colors are assigned so as to try make
-as many languages look as pleasing as possible given the semantic consistency
+builtins. Within each of these categories, colors are assigned to try make as
+many languages look as pleasing as possible given the semantic consistency
 constraint.
 
 The perceptual uniformity of the primary colors ensures that even within this
@@ -88,6 +75,37 @@ the best it could if colors had free per-language semantics.
 
 ## Installation
 
+Install from
+the [JetBrains marketplace](https://plugins.jetbrains.com/plugin/16259-restrained-salmon-theme):
+
+### Architecture
+
+The theme is generated using an end-to-end pipeline going from color palette
+specifications through theme and scheme config. This is controlled by three
+files:
+
+- `colorspec.yaml`
+- `scheme.yaml`
+- `theme.yaml`
+
+The first of these defines the viewing conditions (e.g. 6000K, 20 cd/m²
+background illumination) and specifications for generating named palettes of
+colors within these conditions from a bespoke colorspace. This gets fancy -- for
+the full details, see the sister
+project [palette_gen](https://github.com/qdbp/palette_gen)
+
+The other two are fairly straightforward mappings to the `.theme.json` theme
+file and the `.xml` color scheme file that define the theme's appearance. These
+are also preprocessed by functions defined in `palette_gen`.
+
+This build system provides a high degree of indirection between abstract
+specification and concrete layout, allowing defining relationships between
+colors and to propagate palette tweaks globally with a single build step. This
+allows for very rapid iteration. If you are a theme designer, I encourage you to
+give this system a try.
+
+### Building
+
 First, you need to install `palette_gen`. Then, run
 
 ```
@@ -95,10 +113,24 @@ make <night|day>
 ```
 
 to generate the `theme.json` and `.xml` color scheme files. After this, build
-with IDEA.
+the plugin with IDEA. At this point I use the build-in build system vs. Gradle,
+so I leave it to the reader to figure out how to actually package the plugin.
+However, this is not necessary to just experiment with the `.theme.json` file.
 
 ## Roadmap
 
-Since `palette_gen` supports multiple view settings, being able to dynamically
+~~Since `palette_gen` supports multiple view settings, being able to dynamically
 change the color scheme based on lighting conditions, etc., seems like a
-tantalizing possibility...
+tantalizing possibility...~~ DONE
+
+Right now, only the night theme is generated and propagated. It might be nice to
+expose some sort of view-condition customization handles (as well as others)
+directly to the user to not have to pre-bake 50 different themes to cover all
+possible lighting settings.
+
+Other than that, I think this thing is basically, like, flawless.
+
+It was a lot of effort to seemingly reinvent one of many themes like it, like
+[gruvbox](https://github.com/morhetz/gruvbox), from first principles. But this
+one is mine.
+
