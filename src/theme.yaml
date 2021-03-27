@@ -9,7 +9,7 @@ anchors:
     my_dark_fg: &my_dark_fg black
     my_light_fg: &my_light_fg fg
     my_active_color: &my_active_color white
-    my_border_color: &my_border_color "#909090"
+    my_border_color: &my_border_color neutral
 
     my_link_color: &my_link_color pri_5
 
@@ -20,13 +20,13 @@ anchors:
     # backgrounds
     my_bg: &my_bg bg_3
     my_light_bg: &my_light_bg wht_3
-    my_dark_bg: &my_dark_bg salmon_dark
+    my_dark_bg: salmon_dark
 
     my_input_bg: &my_text_input_bg wht_5
     nontext_input_bg: &my_nontext_input_bg wht_7
     my_input_hover_bg: &my_input_hover_bg hl_6
 
-    my_hover_bg: &my_hover_bg wht_3
+    my_hover_bg: &my_hover_bg wht_4
     my_selected_bg: &my_selected_bg wht_3
     my_sel_text_bg: &my_sel_text_bg hl_5
 
@@ -69,7 +69,8 @@ ui:
         disabledBackground: *my_disabled_bg
 
         # separator background
-        separatorBackground: *my_dark_bg
+        separatorBackground: *my_border_color
+        separatorColor: *my_border_color
 
         # Other background
         errorBackground: hl2
@@ -171,6 +172,9 @@ ui:
         startBackground: hl_5
         endBackground: hl_5
 
+    ActionButton:
+        pressedBackground: *my_selected_bg
+
     Button:
         startBackground: *my_light_bg
         endBackground: *my_bg
@@ -191,16 +195,18 @@ ui:
 
     Plugins:
         Button:
-            installBackground: hl_5
-            installBorderColor: &plugin_green ult_4
+            # install
             installForeground: *my_fg
-            installFillBackground: *plugin_green
             installFillForeground: *my_fg
+            installBackground: hl_5
+            installBorderColor: *my_border_color
+            installFillBackground: hl_5
+            # update
             updateForeground: *my_fg
-            updateBackground: hl_0
-            updateBorderColor: ult_5
+            updateBackground: hl_7
+            updateBorderColor: *my_border_color
         lightSelectionBackground: *my_light_bg
-        tagBackground: hl_4
+        tagBackground: hl_3
         tagForeground: *my_fg
 
 
@@ -208,21 +214,23 @@ icons:
     ColorPalette:
         # should be white in principle, but this is used for more than text...
         # the non-text solid blocks require this to be black, basically
+    # Objects
         Objects.BlackText: black
-        Objects.Grey: fg_dark
-        Objects.Red: tint_1
-        Objects.Pink: tint_0
-        Objects.Blue: tint_5
-        Objects.Yellow: tint_2
-        Objects.YellowDark: pri_2
-        Objects.Green: tint_3
-        Objects.GreenAndroid: tint_3
-        Objects.RedStatus: tint_1
-        Objects.Purple: tint_0
-        Actions.Blue: pri_5
-        Actions.Green: pri_3
-        Actions.Red: pri_1
-        Actions.Yellow: pri_2
+        Objects.Grey: *my_fg
+        Objects.Pink: hyperhl_1
+        Objects.Red: hyperhl_2
+        Objects.Blue: hyperhl_7
+        Objects.Yellow: hyperhl_4
+        Objects.YellowDark: tint_2
+        Objects.Green: hyperhl_5
+        Objects.GreenAndroid: hyperhl_5
+        Objects.RedStatus: hyperhl_2
+        Objects.Purple: hyperhl_0
+    # Actions
+        Actions.Blue: hyper_7
+        Actions.Green: hyper_5
+        Actions.Red: hyper_2
+        Actions.Yellow: hyper_4
         Actions.Grey: *my_fg
         Actions.GreyInline: *my_fg
         Actions.GreyInline.Dark: *my_dark_fg
