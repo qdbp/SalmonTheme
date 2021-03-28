@@ -43,7 +43,7 @@ anchors:
     # identifiers
     my_nonlocal_color: &my_nonlocal_color pri_0
     my_member_color: &my_field_color pri_1
-    my_capture_color: &my_capture_color pri_3
+    my_capture_color: &my_capture_color pri_2
     my_param_color: &my_param_color pri_4
     my_static_color: &my_static_color pri_5
 
@@ -206,7 +206,7 @@ anchors:
         ## IDE Style
         my_active_color: &my_active_col wht_4
         my_console_bg: &my_console_bg wht_3
-        my_ide_bg: &my_ide_bg wht_7
+        my_ide_bg: &my_ide_bg wht_3
         my_dark_bg: &my_dark_bg bg_dark
 
         # line numbers, visual guides, etc.
@@ -402,7 +402,7 @@ attributes:
     folded_text_attributes: { bg: *folded_color }
     injected_language_fragment: { bg: *injected }
     inline_parameter_hint:
-        fg: &my_param_hint_color tint_5
+        fg: &my_param_hint_color neutral
     inline_parameter_hint_current:
         fg: *my_param_hint_color
         bg: hl_5
@@ -502,7 +502,11 @@ attributes:
         <<: *control_flow_ft_mixin
     kotlin_variable_as_function_like:
         <<: *control_flow_ft_mixin
-    kotlin_function_literal_braces_and_arrow: *call
+    # give this a slight color to make it easy to tell lambdas
+    # from block scope -- just bold isn't quit enough
+    kotlin_function_literal_braces_and_arrow:
+        <<: *call
+        fg: tone_2
     kotlin_dynamic_function_call:
         <<: *call
         ft: *bold_italic
@@ -586,7 +590,7 @@ attributes:
 font:
     font_scale: 1.0
     line_spacing: 0.90
-    editor_font_size: 15
+    editor_font_size: 14
     editor_font_name: JetBrains Mono
     editor_ligatures: true
     console_font_name: JetBrains Mono

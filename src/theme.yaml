@@ -11,24 +11,24 @@ anchors:
     my_active_color: &my_active_color white
     my_border_color: &my_border_color neutral
 
-    my_link_color: &my_link_color pri_5
-
-    # disabled elements
-    my_disabled_fg: &my_disabled_fg fg_light
-    my_disabled_bg: &my_disabled_bg bg_dark
-
     # backgrounds
     my_bg: &my_bg bg_3
     my_light_bg: &my_light_bg wht_3
-    my_dark_bg: salmon_dark
+
+    # disabled elements
+    my_disabled_fg: &my_disabled_fg fg_light
+    my_disabled_bg: &my_disabled_bg bg_3
 
     my_input_bg: &my_text_input_bg wht_5
-    nontext_input_bg: &my_nontext_input_bg wht_7
+    nontext_input_bg: &my_nontext_input_bg wht_6
     my_input_hover_bg: &my_input_hover_bg hl_6
 
     my_hover_bg: &my_hover_bg wht_4
     my_selected_bg: &my_selected_bg wht_3
+    my_pressed_bg: &my_pressed_bg wht_7
     my_sel_text_bg: &my_sel_text_bg hl_5
+
+    my_link_color: &my_link_color pri_5
 
 ui:
     # DEFAULTS
@@ -68,9 +68,11 @@ ui:
         # ... disabled
         disabledBackground: *my_disabled_bg
 
+
         # separator background
         separatorBackground: *my_border_color
         separatorColor: *my_border_color
+        bottomSeparatorColor: *my_border_color
 
         # Other background
         errorBackground: hl2
@@ -82,21 +84,21 @@ ui:
         light: *my_fg
         select: *my_fg
 
-        selectionForeground: *my_fg
-        selectedForeground: *my_fg
+        selectionForeground: *my_dark_fg
+        selectedForeground: *my_dark_fg
         lightSelectionForeground: *my_fg
 
         acceleratorForeground: *my_fg
         acceleratorSelectionForeground: *my_fg
 
         # lighter
-        inactiveForeground: *my_light_fg
-        infoForeground: tone_4
+        inactiveForeground: *my_disabled_fg
+        infoForeground: *my_light_fg
 
         # disabled
         foregroundInactive: *my_disabled_fg
         disabledForeground: *my_disabled_fg
-        disabledSelectedForeground: *my_disabled_fg
+        selectedDisabledForeground: *my_disabled_fg
         disabledText: *my_disabled_fg
 
         # other
@@ -129,14 +131,21 @@ ui:
     TextField: &my_text_field
         background: *my_text_input_bg
         selectionBackground: *my_sel_text_bg
-        "*":
-            background: *my_text_input_bg
-            selectionBackground: *my_sel_text_bg
+
+    FormattedTextField: *my_text_field
     PasswordField: *my_text_field
     Editor: *my_text_field
-    SearchField: *my_text_field
-    SearchEverywhere: *my_text_field
-    FormattedTextField: *my_text_field
+    # SearchField: *my_text_field
+    # SearchEverywhere: *my_text_field
+    TextPane: *my_text_field
+    TextArea: *my_text_field
+
+    SearchEverywhere:
+        SearchField: *my_text_field
+
+    SearchResults:
+        Ordinal.File.Foreground: *my_fg
+        Repeated.File.Foreground: tone_5
 
     EditorPane:
         background: bg
@@ -157,7 +166,7 @@ ui:
     FileColor:
         Blue: hl_7
         Green: hl_5
-        Yellow: hl_4
+        Yellow: hl_3
         Orange: hl_3
         Rose: hl_2
         Violet: hl_1
@@ -169,11 +178,18 @@ ui:
         visitedForeground: tone004
 
     SearchMatch:
-        startBackground: hl_5
-        endBackground: hl_5
+        startBackground: *my_sel_text_bg
+        endBackground: *my_sel_text_bg
+
+    Popup:
+        Header.activeBackground: bg_4
+
+    CompletionPopup:
+        selectionBackground: bg_5
+        selectionInactiveBackground: *my_bg
 
     ActionButton:
-        pressedBackground: *my_selected_bg
+        pressedBackground: *my_pressed_bg
 
     Button:
         startBackground: *my_light_bg
@@ -181,6 +197,9 @@ ui:
         default:
             startBackground: wht_6
             endBackground: hl_6
+
+    ToolWindow:
+        Button.SelectedBackground: hl_5
 
     # SPECIALIZED
     VersionControl:
@@ -209,12 +228,22 @@ ui:
         tagBackground: hl_3
         tagForeground: *my_fg
 
+    ProgressBar:
+        failedColor: hyper_2
+        failedEndColor: hyperhl_2
+        indeterminateEndColor: fg
+        indeterminateStartColor: shd_2
+        trackColor: shd_2
+        passedColor: pri_3
+        passedEndColor: tint_3
+
+
 
 icons:
     ColorPalette:
         # should be white in principle, but this is used for more than text...
         # the non-text solid blocks require this to be black, basically
-    # Objects
+        # Objects
         Objects.BlackText: black
         Objects.Grey: *my_fg
         Objects.Pink: hyperhl_1
@@ -226,7 +255,7 @@ icons:
         Objects.GreenAndroid: hyperhl_5
         Objects.RedStatus: hyperhl_2
         Objects.Purple: hyperhl_0
-    # Actions
+        # Actions
         Actions.Blue: hyper_7
         Actions.Green: hyper_5
         Actions.Red: hyper_2

@@ -8,9 +8,9 @@ views:
         bg_hex: "#ECE6DD"
     Day:
         T: 6500
-        Lsw: 100
-        Lmax: 60
-        Lb: 40
+        Lsw: 25
+        Lmax: 40
+        Lb: 20
         bg_hex: "#e8e8e8"
 palette:
     greys:
@@ -98,10 +98,10 @@ palette:
         type: jab_ring
         args:
             n_colors: 8
-            j_lb: 0.73
-            j_ub: 0.73
-            m_lb: 22
-            m_ub: 22
+            j_lb: 0.71
+            j_ub: 0.71
+            m_lb: 23
+            m_ub: 23
             hue_offset: *lights_offset
     bg:
         type: jab_ring
