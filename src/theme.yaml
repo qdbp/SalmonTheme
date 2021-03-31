@@ -12,6 +12,7 @@ anchors:
     my_border_color: &my_border_color neutral
 
     # backgrounds
+    my_header_bg: &my_header_bg bg_3
     my_bg: &my_bg bg_3
     my_light_bg: &my_light_bg wht_3
 
@@ -23,6 +24,7 @@ anchors:
     nontext_input_bg: &my_nontext_input_bg wht_6
     my_input_hover_bg: &my_input_hover_bg hl_6
 
+    # active background
     my_hover_bg: &my_hover_bg wht_4
     my_selected_bg: &my_selected_bg wht_3
     my_pressed_bg: &my_pressed_bg wht_7
@@ -182,7 +184,7 @@ ui:
         endBackground: *my_sel_text_bg
 
     Popup:
-        Header.activeBackground: bg_4
+        Header.activeBackground: *my_header_bg
 
     CompletionPopup:
         selectionBackground: bg_5
@@ -198,8 +200,18 @@ ui:
             startBackground: wht_6
             endBackground: hl_6
 
-    ToolWindow:
-        Button.SelectedBackground: hl_5
+    Notification:
+        ToolWindow:
+            informativeBackground: hl_5
+            informativeBorderColor: *my_border_color
+
+    TableHeader:
+        background: *my_header_bg
+    Table:
+        focusCellBackground: *my_nontext_input_bg
+        stripeColor: dbg_3
+        gridColor: wht_5
+        sortIconColor: neutral
 
     # SPECIALIZED
     VersionControl:

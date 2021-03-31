@@ -131,9 +131,6 @@ anchors:
     # variables
     global_var: &global_var
         fg: *my_nonlocal_color
-    mutable_var: &mutable_var
-        <<: *text
-        <<: *mutable_ft_mixin
     # function stuff
     # function declarations and references are black -- kind of like latent keywords.
     func: &func
@@ -212,6 +209,7 @@ anchors:
         # line numbers, visual guides, etc.
         my_nav_dark: &my_nav_dark tone_1  # striking
         my_nav_light: &my_nav_light fg_light  # unobtrusive
+        my_nav_faint: &my_nav_faint bg_darker
 
 
 colors:
@@ -238,8 +236,8 @@ colors:
     information_hint: *my_ide_bg
 
     # nav info
-    indent_guide: *my_nav_light
-    selected_indent_guide: *my_nav_dark
+    indent_guide: *my_nav_faint
+    selected_indent_guide: *my_nav_light
     right_margin_color: *my_nav_light
     line_numbers_color: *my_nav_light
     line_number_on_caret_row_color: *my_nav_dark
@@ -476,7 +474,8 @@ attributes:
 
     # KOTLIN
     # variables
-    kotlin_mutable_variable: *mutable_var
+    kotlin_mutable_variable:
+        <<: *mutable_ft_mixin
     kotlin_named_argument: *parameter
     kotlin_closure_default_parameter: *closure
     kotlin_wrapped_into_ref: *closure

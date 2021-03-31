@@ -1,15 +1,19 @@
 <idea-plugin>
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
-    <version>0.12</version>
+    <version>1.0rc1</version>
     <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
 
     <description>
-        <![CDATA[ A light theme using Fancy Color Science (tm). Except for the salmon color -- I ripped that off from FT.]]>
+        <![CDATA[ A light theme using Fancy Color Science (tm)]]>
     </description>
 
     <change-notes><![CDATA[
         <ul>
+            <li>Version 1.0rc1 -- 1.0 preview!<ul>
+                <li>theme: implement some omitted style keys</li>
+                <li>theme: differentiate some more elements for contrast and clarity</li>
+            </ul></li>
             <li>Version 0.12 -- palette stabilization and theme polish<ul>
                 <li>theme: improve object and action colors</li>
                 <li>scheme: continued color adjustment</li>

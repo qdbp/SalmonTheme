@@ -20,6 +20,7 @@ palette:
             bg_light: 0.92
             bg: 0.90
             bg_dark: &j_bg_dark 0.80
+            bg_darker: &j_bg_darker 0.73
             neutral: 0.5
             fg_light: 0.35
             fg: 0.15
@@ -89,8 +90,8 @@ palette:
         type: jab_ring
         args:
             n_colors: 8
-            j_lb: 0.78
-            j_ub: 0.78
+            j_lb: 0.77
+            j_ub: 0.77
             m_lb: 11
             m_ub: 11
             hue_offset: *lights_offset
@@ -111,6 +112,15 @@ palette:
             j_ub: *j_bg_dark
             m_lb: 4.0
             m_ub: 4.0
+            hue_offset: *lights_offset
+    dbg:
+        type: jab_ring
+        args:
+            n_colors: 8
+            j_lb: *j_bg_darker
+            j_ub: *j_bg_darker
+            m_lb: 3.0
+            m_ub: 3.0
             hue_offset: *lights_offset
     wht:
         type: jab_ring
