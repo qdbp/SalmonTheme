@@ -5,7 +5,11 @@
     <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
 
     <description>
-        <![CDATA[ A light theme using Fancy Color Science (tm)]]>
+        <![CDATA[
+         <p>A light theme using Fancy Color Science (tm)</p>
+         <p>Generated using <a href="https://github.com/qdbp/palette_gen">palette gen</a></p>
+         <p>If you like it, feel free to give me money <a href="https://www.paypal.com/donate?hosted_button_id=7NCKBB3MZUVRN">here.</a></p>
+        ]]>
     </description>
 
     <change-notes><![CDATA[
