@@ -40,7 +40,7 @@ language construct -- modulo my ability to select it for highlighting -- that
 alters control flow. Nothing else is bold: not declarations, not global
 variables, etc.
 
-I believe this creates a very nice effect. Glancing at a block of, its structure
+I believe this creates a very nice effect. Glancing at a block of code, its structure
 and its calls visually pop! to give a high-level impression at a glance, without
 being crowded out by identifier specifics.
 
