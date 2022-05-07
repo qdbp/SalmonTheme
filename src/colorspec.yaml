@@ -1,10 +1,16 @@
 name: Restraint
 views:
-    Night:
+    Twilight:
         T: 6000
         Lsw: 2
         Lmax: 10
         Lb: 6
+        bg_hex: "#ECE6DD"
+    Night:
+        T: 5000
+        Lsw: 1
+        Lmax: 5
+        Lb: 2
         bg_hex: "#ECE6DD"
     Day:
         T: 6500
@@ -65,7 +71,7 @@ palette:
             n_colors: 6
             j_lb: *ult_j
             j_ub: *ult_j
-            m_lb: &tint_m 12
+            m_lb: &tint_m 11
             m_ub: *tint_m
             hue_offset: *alt_offset
     hyper:

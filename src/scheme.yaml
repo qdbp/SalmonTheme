@@ -32,13 +32,15 @@ anchors:
     control_flow_ft_mixin: &control_flow_ft_mixin
         ft: *bold
 
-    # specials
+    # specials: prominent
     my_builtin_color: &my_builtin_color ult_0
     my_metadata_color: &my_metadata_color ult_1
     my_label_color: &my_label_color ult_2
-    my_macro_color: ult_3
-    my_scope_color: &my_scope_color ult_4
+    my_macro_color: &my_macro_color ult_4
     my_constant_color: &my_constant_color ult_5
+
+    # specials: toned down
+    my_scope_color: &my_scope_color tint_03
 
     # identifiers
     my_nonlocal_color: &my_nonlocal_color pri_0
@@ -46,6 +48,7 @@ anchors:
     my_capture_color: &my_capture_color pri_2
     my_param_color: &my_param_color pri_4
     my_static_color: &my_static_color pri_5
+    my_enum_member_color: &my_enum_member_color pri_5
 
     # literals lower-colorfulness colors: literal ideas + type-level ideas
     my_string_color: &my_string_color tone_3
@@ -54,6 +57,7 @@ anchors:
 
     # (tones) (again) type-level ideas
     my_enum_color: &my_enum_color tone_0
+    my_struct_color: &my_struct_color tone_1
     my_object_color: &my_object_color tone_2  # object in the Kotlin sense -- singleton
     my_interface_color: &my_interface_color tone_3
     my_abstract_class_color: &my_abstract_class_color tone_4
@@ -98,7 +102,9 @@ anchors:
         ft: *bold
     metadata: &metadata
         fg: *my_metadata_color
-    namespace: &namespace { fg: *my_scope_color }
+
+    namespace: &namespace
+        fg: *my_scope_color
 
     ## IDENTIFIERS
     # builtins
@@ -127,6 +133,10 @@ anchors:
         fg: *my_class_color
     object: &object
         fg: *my_object_color
+    enum: &enum
+        fg: *my_enum_color
+    struct: &struct
+        fg: *my_struct_color
 
     # variables
     global_var: &global_var
@@ -138,14 +148,20 @@ anchors:
     # ... and so are function calls. This makes them the same as keywords, intentionally.
     call: &call
         fg: black
-        ft: *bold
+        <<: *control_flow_ft_mixin
+
+    # overloaded operators are hinted specially: as a call with the color of a static field
+    overloaded_op_call: &overloaded_op_call
+        fg: *my_static_color
+        <<: *control_flow_ft_mixin
+
+    # decorators are, in a loose way, a form of adding meta-functionality to a function
     decorator: &decorator
-        <<: *metadata
+        fg: *my_metadata_color
         <<: *control_flow_ft_mixin
 
     closure: &closure { fg: *my_capture_color }
     parameter: &parameter { fg: *my_param_color }
-    enum: &enum { fg: *my_enum_color }
     # control flow transfer -> bold; making a class -> class color
     call_constructor: &call_constructor
         fg: *my_class_color
@@ -156,6 +172,9 @@ anchors:
     static_field: &static_field
         fg: *my_static_color
         <<: *static_referent_mixin
+    # we distinguish a member of an enum from the type-level entity
+    enum_member: &enum_member
+        fg: *my_enum_member_color
     # a property is a field with control flow -- field color, but bold in our language.
     property: &property
         <<: *field
@@ -477,7 +496,7 @@ attributes:
     kotlin_mutable_variable:
         <<: *mutable_ft_mixin
     kotlin_named_argument: *parameter
-    kotlin_closure_default_parameter: *closure
+    kotlin_closure_default_parameter: *parameter
     kotlin_wrapped_into_ref: *closure
     # not bold since it's only a declaration
     kotlin_instance_property_custom_property_declaration:
@@ -542,6 +561,23 @@ attributes:
     kotlin_smart_cast_constant: { }
     kotlin_smart_constant: { }
 
+    # C/C++ (Clion)
+    # structural
+    oc.macro_parameter: *parameter
+    oc.namespace_like: *namespace
+    # type level
+    oc.concept: *interface
+    oc.struct_like: *struct
+    oc.typedef: *class
+    oc.template_type: *type_param
+    # identifier-level
+    oc.enum_const: *enum_member
+    oc.struct_field: *field
+    oc.selfsuperthis: *this
+    # control flow
+    oc.label: *label
+    oc.overloaded_operator: *overloaded_op_call
+
     # PYTHON
     # in python we elide global/static underlines for cleanliness, especially since we have no good way of
     # doing it anyway
@@ -565,7 +601,7 @@ attributes:
     py.predefined_usage:
         <<: *py_predefined
         ft: *control_flow_ft_mixin
-    py.self_parameter: *this
+    py.self_parameter: *field
     py.string.u: *string
     py.string.b: *bytestring
     # SQL
@@ -589,7 +625,7 @@ attributes:
 font:
     font_scale: 1.0
     line_spacing: 0.90
-    editor_font_size: 14
+    editor_font_size: 12
     editor_font_name: JetBrains Mono
     editor_ligatures: true
     console_font_name: JetBrains Mono

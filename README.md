@@ -1,6 +1,7 @@
 # Restrained Salmon
 
-![aesthetic perfection](examples/salmon_6000k.png)
+![aesthetic perfection_python](examples/salmon_6000K_python.png)
+![aesthetic perfection_cpp](examples/salmon_6000K_cpp.png)
 
 Now that dark mode is sweeping the world, true hipsters must migrate to using
 light themes. This is one such theme.

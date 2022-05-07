@@ -1,30 +1,35 @@
-.PRECIOUS: build/palette.%.yaml
-.PRECIOUS: resources/Restraint.%.yaml
+OUT_FN = $(RES_DIR)/Salmon.theme.json
+RES_DIR = src/main/resources/
 
-OUT_FN = resources/Salmon.theme.json
+.PRECIOUS: build/palette.%.yaml
+.PRECIOUS: $(RES_DIR)/Restraint.%.yaml
 
 night: build/Salmon.Night.theme.json resources/Restraint.Night.xml
 	cp $< $(OUT_FN)
 	cp build/palette.Night.html build/palette.html
-	cp resources/Restraint.Night.xml resources/Restraint.xml
+	cp $(RES_DIR)/Restraint.Night.xml $(RES_DIR)/Restraint.xml
 
-day: build/Salmon.Day.theme.json resources/Restraint.Day.xml
+twilight: build/Salmon.Twilight.theme.json $(RES_DIR)/Restraint.Twilight.xml
+	cp $< $(OUT_FN)
+	cp build/palette.Twilight.html build/palette.html
+	cp $(RES_DIR)/Restraint.Twilight.xml $(RES_DIR)/Restraint.xml
+
+day: build/Salmon.Day.theme.json $(RES_DIR)/Restraint.Day.xml
 	cp $< $(OUT_FN)
 	cp build/palette.Day.html build/palette.html
-	cp resources/Restraint.Day.xml resources/Restraint.xml
+	cp $(RES_DIR)/Restraint.Day.xml $(RES_DIR)/Restraint.xml
 
 build/palette.%.yaml: src/colorspec.yaml
 	palette-gen --out build/palette.yaml \
 		palette \
 		src/colorspec.yaml \
 		$* \
-		--html \
-		--cone
+		--html
 
-resources/Restraint.%.xml: build/palette.%.yaml src/scheme.yaml
+$(RES_DIR)/Restraint.%.xml: build/palette.%.yaml src/scheme.yaml
 	echo "Processing $< to $@, stem is $*"
 	palette-gen \
-		--out resources/Restraint.$*.xml \
+		--out $(RES_DIR)/Restraint.$*.xml \
 		scheme src/scheme.yaml \
 		build/palette.$*.yaml
 
