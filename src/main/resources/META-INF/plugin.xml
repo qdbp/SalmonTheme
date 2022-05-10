@@ -2,21 +2,26 @@
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
     <version>1.0rc3</version>
-    <vendor email="evgeny.naumov@protonmail.com" url="http://enaumov.me">Evgeny Naumov</vendor>
+    <vendor email="evgeny.naumov@protonmail.com" url="https://github.com/qdbp/SalmonTheme">Evgeny Naumov</vendor>
 
     <description>
         <![CDATA[
          <p><b>A light theme using Fancy Color Science (tm)</b></p>
          <p>Generated using <a href="https://github.com/qdbp/palette_gen">palette gen</a>.</p>
          <p>If you like it, feel free to give me money <a href="https://www.paypal.com/donate?hosted_button_id=7NCKBB3MZUVRN">here.</a></p>
+         <p>Please report any issues at <a href="https://github.com/qdbp/SalmonTheme/issues"><p>
         ]]>
     </description>
 
     <change-notes><![CDATA[
         <ul>
             <li>Version 1.0rc3<ul>
-                <li>theme: support C/C++ properly</li>
-                <li>scheme: fix defects with new button types</li>
+                <li>plugin: glorious new logo!</li>
+                <li>colors: slightly desaturate tints</li>
+                <li>scheme: support C/C++</li>
+                <li>scheme: support Bash</li>
+                <li>scheme: support Typescript</li>
+                <li>theme: fix various defects: notifications, new buttons</li>
             </ul><li>
             <li>Version 1.0rc1 -- 1.0 preview!<ul>
                 <li>theme: implement some omitted style keys</li>

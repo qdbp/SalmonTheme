@@ -24,7 +24,7 @@ build/palette.%.yaml: src/colorspec.yaml
 		palette \
 		src/colorspec.yaml \
 		$* \
-		--html
+		--html --cone
 
 $(RES_DIR)/Restraint.%.xml: build/palette.%.yaml src/scheme.yaml
 	echo "Processing $< to $@, stem is $*"

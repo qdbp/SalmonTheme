@@ -1,3 +1,15 @@
+file("build.env").readLines().forEach {
+  if (it.isNotEmpty() && !it.startsWith("#")) {
+    val pos = it.indexOf("=")
+    val key = it.substring(0, pos)
+    val value = it.substring(pos + 1)
+
+    println(key)
+    println(value)
+    System.setProperty(key, value)
+  }
+}
+
 plugins {
   id("org.jetbrains.intellij") version "1.4.0"
 }
@@ -29,12 +41,12 @@ tasks {
   }
 
   signPlugin {
-    certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-    privateKey.set(System.getenv("PRIVATE_KEY"))
-    password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+    certificateChain.set(System.getProperty("CERTIFICATE_CHAIN"))
+    privateKey.set(System.getProperty("PRIVATE_KEY"))
+    password.set(System.getProperty("PRIVATE_KEY_PASSWORD"))
   }
 
   publishPlugin {
-    token.set(System.getenv("PUBLISH_TOKEN"))
+    token.set(System.getProperty("PUBLISH_TOKEN"))
   }
 }
