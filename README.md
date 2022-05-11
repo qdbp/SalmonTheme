@@ -1,6 +1,7 @@
 # Restrained Salmon
 
-![aesthetic perfection](examples/salmon_6000k.png)
+![aesthetic perfection_python](examples/salmon_6000K_python.png)
+![aesthetic perfection_cpp](examples/salmon_6000K_cpp.png)
 
 Now that dark mode is sweeping the world, true hipsters must migrate to using
 light themes. This is one such theme.
@@ -73,12 +74,41 @@ The perceptual uniformity of the primary colors ensures that even within this
 framework, for any given language the balance of tones looks rather nice, if not
 the best it could if colors had free per-language semantics.
 
+### Supported Languages
+
+The following languages have had all of their fields styled to work with the
+theme according to its design language. Some have been more attentively tuned
+than others, but none should have any glaring issues.
+
+#### Programming languages
+
+- C/C++
+- Java
+- JavaScript
+- Kotlin
+- Python
+- Shell
+- TypeScript
+
+#### Other File Types
+
+- JSON
+- SQL
+- XML
+- YAML
+
+### Support
+
+Inclusion and only inclusion on the above lists means I am open to fixing bugs
+and serious aesthetic defects in the associated themes. I am open to theming
+other languages by popular demand.
+
 ## Installation
 
 Install from
 the [JetBrains marketplace](https://plugins.jetbrains.com/plugin/16259-restrained-salmon-theme):
 
-### Architecture
+## Architecture
 
 The theme is generated using an end-to-end pipeline going from color palette
 specifications through theme and scheme config. This is controlled by three
@@ -109,7 +139,7 @@ give this system a try.
 First, you need to install `palette_gen`. Then, run
 
 ```
-make <night|day>
+make <night|twilight|day>
 ```
 
 to generate the `theme.json` and `.xml` color scheme files. After this, build
@@ -123,7 +153,7 @@ However, this is not necessary to just experiment with the `.theme.json` file.
 change the color scheme based on lighting conditions, etc., seems like a
 tantalizing possibility...~~ DONE
 
-Right now, only the night theme is generated and propagated. It might be nice to
+Right now, only the twilight theme is generated and propagated. It might be nice to
 expose some sort of view-condition customization handles (as well as others)
 directly to the user to not have to pre-bake 50 different themes to cover all
 possible lighting settings.

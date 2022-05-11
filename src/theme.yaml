@@ -15,13 +15,14 @@ anchors:
     my_header_bg: &my_header_bg bg_3
     my_bg: &my_bg bg_3
     my_light_bg: &my_light_bg wht_3
+    my_airy_bg: &my_airy_bg wht_7  # for notifications and such
 
     # disabled elements
     my_disabled_fg: &my_disabled_fg fg_light
     my_disabled_bg: &my_disabled_bg bg_3
 
     my_input_bg: &my_text_input_bg wht_5
-    nontext_input_bg: &my_nontext_input_bg wht_6
+    my_nontext_input_bg: &my_nontext_input_bg wht_6
     my_input_hover_bg: &my_input_hover_bg hl_6
 
     # active background
@@ -30,7 +31,14 @@ anchors:
     my_pressed_bg: &my_pressed_bg wht_7
     my_sel_text_bg: &my_sel_text_bg hl_5
 
+    # accented backgrounds
+    my_accented_orange_bg: &my_accented_orange_bg hl_4
+    my_accented_green_bg: &my_accented_green_bg hl_5
+    my_accented_blue_bg: &my_accented_blue_bg hl_7
+
+    # special text colors
     my_link_color: &my_link_color pri_5
+    my_standout_text_color: &my_standout_text_color pri_5
 
 ui:
     # DEFAULTS
@@ -65,6 +73,7 @@ ui:
         selectionInactiveBackground: *my_selected_bg
         underlinedTabBackground: *my_selected_bg
         selectionBackground: *my_selected_bg
+        selectedButtonColor: *my_selected_bg
 
         # Dark Backgrounds -- disabled and inactive
         # ... disabled
@@ -105,6 +114,8 @@ ui:
 
         # other
         shortcutForeground: *my_link_color
+        modifiedItemForeground: *my_standout_text_color  # e.g. changed keybinds
+        modifyingValueForeground: *my_standout_text_color
 
         ## BORDERS
         # idea: all borders are the same except disabled one, which conform to the
@@ -119,6 +130,8 @@ ui:
         borderShadow: *my_border_color
         ContrastBorderColor: *my_border_color
         windowBorder: *my_border_color
+        selectedStartBorderColor: *my_border_color
+        selectedEndBorderColor: *my_border_color
 
         # disabled
         disabledBorderColor: *my_disabled_fg
@@ -162,13 +175,19 @@ ui:
             disabledIconColor: *my_disabled_fg
             iconColor: *my_fg
 
+    Bookmark:
+        iconBackground: *my_accented_green_bg
+        Mnemonic:
+            iconBorderColor: *my_border_color
+            iconBackground: *my_accented_green_bg
+
     Borders:
         color: *my_border_color
 
     FileColor:
         Blue: hl_7
         Green: hl_5
-        Yellow: hl_3
+        Yellow: hl_4
         Orange: hl_3
         Rose: hl_2
         Violet: hl_1
@@ -201,9 +220,20 @@ ui:
             endBackground: hl_6
 
     Notification:
+        background: *my_airy_bg
         ToolWindow:
             informativeBackground: hl_5
             informativeBorderColor: *my_border_color
+
+    NotificationsToolwindow:
+        newNotification:
+            background: *my_airy_bg
+
+    TabbedPane:
+        focusColor: *my_selected_bg
+        selected: *my_selected_bg
+        underlineColor: *my_light_fg
+        hoverColor: *my_hover_bg
 
     TableHeader:
         background: *my_header_bg
@@ -241,6 +271,7 @@ ui:
         tagForeground: *my_fg
 
     ProgressBar:
+        progressColor: hyper_7
         failedColor: hyper_2
         failedEndColor: hyperhl_2
         indeterminateEndColor: fg
@@ -248,8 +279,6 @@ ui:
         trackColor: shd_2
         passedColor: pri_3
         passedEndColor: tint_3
-
-
 
 icons:
     ColorPalette:
