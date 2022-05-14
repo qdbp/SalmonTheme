@@ -106,9 +106,11 @@ anchors:
         ft: *bold
     metadata: &metadata
         fg: *my_metadata_color
-
     namespace: &namespace
         fg: *my_scope_color
+    noise: &noise
+        fg: fg_light
+        bg: bg
 
     ## IDENTIFIERS
     # builtins
@@ -185,7 +187,10 @@ anchors:
     # a property is a field with control flow -- field color, but bold in our language.
     property: &property
         <<: *field
-        ft: *bold
+        <<: *ft_control_flow_mixin
+    global_property: &global_property
+        <<: *global_var
+        <<: *ft_control_flow_mixin
 
     ## CODE ASSIST
     # diffs
@@ -682,6 +687,26 @@ attributes:
     ts.type_guard: *smartcast
 
     # MARKUP
+    # CSS
+    ## meta
+    css.keyword: *decorator  # keywords are so rare they act more like imports
+    css.semicolon: *noise
+    css.colon: *noise
+    ## selectors: most of these conform to our color conventions
+    css.attribute_name: *parameter
+    css.class_name: *static_field  # static "member" of a selector
+    css.property_name: {fg: black}
+    css.pseudo: *field  # dynamic "member" of a selector
+    # we can play a bit loose with bold since CSS has so little control flow
+    css.hash:  # this is #id selectors
+        <<: *builtin
+        ft: *bold
+    ## rvalues
+    css.color: *enum_member # loose interpretation
+    css.ident: *text
+    css.property_value: *text
+    css.unicode.range: *bytestring
+
     # TOML
     org.toml.BOOLEAN: *constant
     # XML
