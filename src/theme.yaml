@@ -1,3 +1,4 @@
+#file: noinspection YAMLUnusedAnchor
 meta:
     name: Salmon
     author: Evgeny Naumov
@@ -42,6 +43,7 @@ anchors:
 
 ui:
     # DEFAULTS
+    SearchEverywhere.List.settingsBackground: *my_bg
     "*":
         # Default Backgrounds
         background: *my_bg
@@ -55,6 +57,7 @@ ui:
         # ... inactive
         inactiveColoredFileBackground: *my_bg
         inactiveColoredTabBackground: *my_bg
+        settingsBackground: *my_bg
 
         # Lighter Backgrounds -- highlights and selections
         # active
