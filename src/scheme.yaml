@@ -686,7 +686,7 @@ attributes:
     ts.primitive.types: *builtin
     ts.type_guard: *smartcast
 
-    # MARKUP
+    ## NON-PROGRAMMING FILES
     # CSS
     ## meta
     css.keyword: *decorator  # keywords are so rare they act more like imports
@@ -706,7 +706,13 @@ attributes:
     css.ident: *text
     css.property_value: *text
     css.unicode.range: *bytestring
-
+    # GHERKIN
+    gherkin_outline_parameter_substitution:
+        base: default_instance_field
+    gherkin_pystring:
+        base: default_string
+    gherkin_regexp_paramter:
+        base: default_parameter
     # TOML
     org.toml.BOOLEAN: *constant
     # XML
@@ -720,6 +726,7 @@ attributes:
     # YAML
     yaml_anchor: *label
     yaml_scalar_key: *keyword
+
 font:
     font_scale: 1.0
     line_spacing: 0.90
