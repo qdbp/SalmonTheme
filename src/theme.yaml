@@ -78,7 +78,9 @@ ui:
         # Dark Backgrounds -- disabled and inactive
         # ... disabled
         disabledBackground: *my_disabled_bg
-
+        hoverInactiveBackground: *my_disabled_bg
+        lightSelectionInactiveBackground: *my_disabled_bg
+        mouseShortcutBackground: "#ff0000"
 
         # separator background
         separatorBackground: *my_border_color

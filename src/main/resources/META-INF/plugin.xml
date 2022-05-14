@@ -15,6 +15,10 @@
 
     <change-notes><![CDATA[
         <ul>
+            <li>Version 1.0rc4<ul>
+                <li>scheme: CSS support</li>
+                <li>theme: small tweaks and fixes</li>
+            </ul></li>
             <li>Version 1.0rc3<ul>
                 <li>plugin: glorious new logo!</li>
                 <li>colors: slightly desaturate tints</li>
@@ -22,7 +26,7 @@
                 <li>scheme: support Bash</li>
                 <li>scheme: support Typescript</li>
                 <li>theme: fix various defects: notifications, new buttons</li>
-            </ul><li>
+            </ul></li>
             <li>Version 1.0rc1 -- 1.0 preview!<ul>
                 <li>theme: implement some omitted style keys</li>
                 <li>theme: differentiate some more elements for contrast and clarity</li>

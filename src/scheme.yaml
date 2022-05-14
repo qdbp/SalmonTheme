@@ -281,6 +281,7 @@ colors:
     # TODO misc
     diff_separators_background: *my_fg_light
     documentation_color: *my_ide_bg
+    doc_comment_link: *link
 
 attributes:
     ### ALL LANGUAGES
@@ -303,6 +304,7 @@ attributes:
         <<: *doc_tag
         effect: 1
     default_doc_comment_tag_value: *doc_tag
+    default_doc_markup: {bg: *injected}
 
     # Documentation-like text attributes
     marked_for_removal_attributes:
@@ -509,7 +511,7 @@ attributes:
     console_user_input: {fg: tone_3}
     console_system_output: {fg: *my_fg}
     console_normal_output: {fg: *my_fg}
-    console_error_output: {fg: black, bg: hlbg_2}
+    console_error_output: {fg: black, bg: bg_2}
 
     # JS
     js.module_name: *namespace

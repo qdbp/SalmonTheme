@@ -92,6 +92,7 @@ than others, but none should have any glaring issues.
 
 #### Other File Types
 
+- CSS
 - JSON
 - SQL
 - XML
