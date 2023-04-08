@@ -225,14 +225,14 @@ ui:
             endBackground: hl_6
 
     Notification:
-        background: *my_airy_bg
+        background: *my_light_bg
         ToolWindow:
             informativeBackground: hl_5
             informativeBorderColor: *my_border_color
 
     NotificationsToolwindow:
         newNotification:
-            background: *my_airy_bg
+            background: *my_light_bg
 
     TabbedPane:
         focusColor: *my_selected_bg
