@@ -26,6 +26,7 @@ intellij {
   version.set("2021.2")
   type.set("IC") // Target IDE Platform
   plugins.set(listOf(/* Plugin Dependencies */))
+  updateSinceUntilBuild.set(false)
 }
 
 tasks {
@@ -33,11 +34,6 @@ tasks {
   withType<JavaCompile> {
     sourceCompatibility = "11"
     targetCompatibility = "11"
-  }
-
-  patchPluginXml {
-    sinceBuild.set("212")
-    untilBuild.set("999.*")
   }
 
   signPlugin {
