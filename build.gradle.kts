@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "me.enaumov"
-version = "1.0rc4"
+version = "1.0"
 
 repositories {
   mavenCentral()
@@ -37,7 +37,7 @@ tasks {
 
   patchPluginXml {
     sinceBuild.set("212")
-    untilBuild.set("223.*")
+    untilBuild.set("232.*")
   }
 
   signPlugin {

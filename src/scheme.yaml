@@ -202,7 +202,7 @@ anchors:
         bg_new:
             bg: &my_new_col hl_5
         bg_del:
-            bg: &my_del_col fg_light
+            bg: &my_del_col bg_darker
 
     errors:
         bg_warn: &bg_warn hl_3
@@ -219,7 +219,7 @@ anchors:
             stripe: *my_new_col
         striped_del: &striped_del
             bg: *my_del_col
-            stripe: *my_del_col
+            stripe: neutral
 
         warn_stripe_color: &my_warn_stripe_col ult_2
         my_weak_warn_color: &my_weak_warn_col tint_2

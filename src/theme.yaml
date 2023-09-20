@@ -243,10 +243,11 @@ ui:
     TableHeader:
         background: *my_header_bg
     Table:
+        selectionForeground: *my_dark_fg
         focusCellBackground: *my_nontext_input_bg
         stripeColor: dbg_3
         gridColor: wht_5
-        sortIconColor: neutral
+        sortIconColor: bg_darker
 
     # SPECIALIZED
     VersionControl:

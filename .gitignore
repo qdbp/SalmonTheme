@@ -42,3 +42,7 @@ bin/
 /gradle/
 /.run/
 build.env
+/build/resources/
+/src/main/resources/Salmon.theme.json
+/src/main/resources/Restraint.xml
+/src/main/resources/Restraint.Twilight.xml
