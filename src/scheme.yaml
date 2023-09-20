@@ -196,29 +196,32 @@ anchors:
     # diffs
     diffs:
         bg_error: &bg_err
-            bg: &my_err_col hl_2
+            bg: &my_err_bg hl_2
         bg_mod:
-            bg: &my_mod_col hl_7
+            bg: &my_mod_bg hl_7
+            gutter: &my_mod_gutter hl_7
         bg_new:
-            bg: &my_new_col hl_5
+            bg: &my_new_bg hl_5
+            gutter: &my_new_gutter hl_5
         bg_del:
-            bg: &my_del_col bg_darker
+            bg: &my_del_bg bg_darker
+            gutter: &my_del_gutter fg_light
 
     errors:
         bg_warn: &bg_warn hl_3
         err_stripe_color: &my_err_stripe_col ult_1
 
         striped_err: &striped_err
-            bg: *my_err_col
+            bg: *my_err_bg
             stripe: *my_err_stripe_col
         striped_mod: &striped_mod
-            bg: *my_mod_col
-            stripe: *my_mod_col
+            bg: *my_mod_bg
+            stripe: *my_mod_bg
         striped_new: &striped_new
-            bg: *my_new_col
-            stripe: *my_new_col
+            bg: *my_new_bg
+            stripe: *my_new_bg
         striped_del: &striped_del
-            bg: *my_del_col
+            bg: *my_del_bg
             stripe: neutral
 
         warn_stripe_color: &my_warn_stripe_col ult_2
@@ -247,12 +250,12 @@ anchors:
 colors:
     # color names in this configuration reference those in the palette produced from colorspec.yaml
     # diff colors
-    added_lines_color: *my_new_col
-    deleted_lines_color: *my_del_col
-    modified_lines_color: *my_mod_col
+    added_lines_color: *my_new_gutter
+    deleted_lines_color: *my_del_gutter
+    modified_lines_color: *my_mod_gutter
 
     ignored_added_lines_border_color: ult_3
-    ignored_deleted_lines_border_color: ult_1
+    ignored_deleted_lines_border_color: fg_dark
     ignored_modified_lines_border_color: ult_5
 
     # TODO clobbers deleted borders... bug?
@@ -432,7 +435,7 @@ attributes:
         bg: hl001
         ft: *bold
     unmatched_brace_attributes:
-        bg: *my_err_col
+        bg: *my_err_bg
         ft: *bold
 
     folded_text_attributes: { bg: *folded_color }
