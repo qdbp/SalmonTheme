@@ -14,44 +14,8 @@
 
     <change-notes><![CDATA[
         <ul>
-            <li>Version 1.0<ul>
-                <li>scheme: fix too dark diff deletion background</li>
-            </ul></li>
-            <li>Version 1.0rc4<ul>
-                <li>scheme: CSS support</li>
-                <li>theme: small tweaks and fixes</li>
-            </ul></li>
-            <li>Version 1.0rc3<ul>
-                <li>plugin: glorious new logo!</li>
-                <li>colors: slightly desaturate tints</li>
-                <li>scheme: support C/C++</li>
-                <li>scheme: support Bash</li>
-                <li>scheme: support Typescript</li>
-                <li>theme: fix various defects: notifications, new buttons</li>
-            </ul></li>
-            <li>Version 1.0rc1 -- 1.0 preview!<ul>
-                <li>theme: implement some omitted style keys</li>
-                <li>theme: differentiate some more elements for contrast and clarity</li>
-            </ul></li>
-            <li>Version 0.12 -- palette stabilization and theme polish<ul>
-                <li>theme: improve object and action colors</li>
-                <li>scheme: continued color adjustment</li>
-                <li>palette: add dedicated palettes for objects and actions</li>
-            </ul></li>
-            <li>Version 0.11 -- palette fixes<ul>
-                <li>palette: remove broken ab offset to get proper temperature color shift</li>
-                <li>palette: deepen and saturate primary color collection</li>
-                <li>scheme: add javascript styling</li>
-                <li>scheme: color balancing progress, not final yet</li>
-            </ul></li>
-            <li>Version 0.10 -- stabilization candidate for 1.0<ul>
-                <li>theme: fixed contrast-less text fields, info boxes, etc.</li>
-                <li>theme: replaced the salmon color with more muted version</li>
-                <li>scheme: more muted literals</li>
-                <li>scheme: more visible documentation comments</li>
-                <li>scheme: disable all underlining</li>
-                <li>palette: richer highlight colors</li>
-                <li>palette: larger primary palette with TriHex solver</li>
+            <li>Version 1.0.2<ul>
+                <li>scheme: do not set background of local variables</li>
             </ul></li>
         </ul>
     ]]></change-notes>
