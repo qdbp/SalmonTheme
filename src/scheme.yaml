@@ -339,8 +339,10 @@ attributes:
     default_label: *label
 
     ## IDENTIFIERS
-    default_identifier: *text
-    default_local_variable: *text
+    default_identifier:
+        fg: *my_fg
+    default_local_variable:
+        fg: *my_fg
     # "preproc" is kind of a catch all for everything sneaky in local/object scope.
     default_reassigned_local_variable:
         <<: *ft_mutable_mixin
