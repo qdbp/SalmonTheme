@@ -83,7 +83,7 @@ ui:
         disabledBackground: *my_disabled_bg
         hoverInactiveBackground: *my_disabled_bg
         lightSelectionInactiveBackground: *my_disabled_bg
-        mouseShortcutBackground: "#ff0000"
+        mouseShortcutBackground: *my_nontext_input_bg
 
         # separator background
         separatorBackground: *my_border_color
