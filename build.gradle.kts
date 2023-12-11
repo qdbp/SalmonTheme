@@ -11,11 +11,11 @@ file("build.env").readLines().forEach {
 }
 
 plugins {
-  id("org.jetbrains.intellij") version "1.4.0"
+  id("org.jetbrains.intellij") version "1.16.1"
 }
 
 group = "me.enaumov"
-version = "1.0.5"
+version = "1.0.6"
 
 repositories {
   mavenCentral()

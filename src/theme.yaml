@@ -310,3 +310,24 @@ icons:
         Actions.Grey: *my_fg
         Actions.GreyInline: *my_fg
         Actions.GreyInline.Dark: *my_dark_fg
+        # Checkboxes
+        Checkbox.Background.Disabled: *my_disabled_bg
+        Checkbox.Border.Disabled: *my_disabled_bg
+
+        Checkbox.Border.Default: *my_border_color
+        Checkbox.Foreground.Default: *my_nontext_input_bg
+        Checkbox.Background.Default: *my_nontext_input_bg
+
+        Checkbox.Foreground.Selected: *my_active_color
+        Checkbox.Background.Selected: hyper_7
+        Checkbox.Border.Selected: hyper_7
+
+# TODO autogenerate defaults
+iconColorsOnSelection:
+    hyper_1: hyper_1
+    hyper_2: hyper_2
+    hyper_3: hyper_3
+    hyper_4: hyper_4
+    hyper_5: hyper_5
+    hyper_6: hyper_6
+    hyper_7: hyper_7

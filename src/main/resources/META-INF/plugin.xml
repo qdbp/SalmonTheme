@@ -1,7 +1,9 @@
 <idea-plugin>
     <id>me.enaumov.plugins.salmon</id>
     <name>Restrained Salmon Theme</name>
-    <vendor email="evgeny.naumov@protonmail.com" url="https://github.com/qdbp/SalmonTheme">Evgeny Naumov</vendor>
+    <vendor email="evgeny.naumov@protonmail.com"
+            url="https://github.com/qdbp/SalmonTheme">Evgeny Naumov
+    </vendor>
 
     <description>
         <![CDATA[
@@ -14,6 +16,9 @@
 
     <change-notes><![CDATA[
         <ul>
+            <li>Version 1.0.6<ul>
+                <li>Fix unreadable debugger inlined values.</li>
+            </ul></li>
             <li>Version 1.0.5<ul>
                 <li>Fix garish red debugging background for mouse shortcut selection.</li>
             </ul></li>
@@ -27,7 +32,7 @@
     ]]></change-notes>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="203.0" />
+    <idea-version since-build="203.0"/>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -35,7 +40,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <themeProvider id="21fb80a7-5159-49d7-90f1-32eb94d8c177" path="/Salmon.theme.json"/>
+        <themeProvider id="21fb80a7-5159-49d7-90f1-32eb94d8c177"
+                       path="/Salmon.theme.json"/>
     </extensions>
 
     <actions>

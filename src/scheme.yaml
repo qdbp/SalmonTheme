@@ -136,8 +136,10 @@ anchors:
         fg: *my_abstract_class_color
     class: &class
         fg: *my_class_color
+        ft: *italic
     type_alias: &type_alias
         fg: *my_typealias_color
+        effect: *underlined
     object: &object
         fg: *my_object_color
     enum: &enum
@@ -283,8 +285,6 @@ colors:
     # debugger
     debug_exe_color: &my_debug_exe_col hl_3
     debug_brk_color: &my_debug_brk_col hl_2
-    debugger_inlined_values: tint_2
-    debugger_inlined_values_modified: ult_2
 
     # TODO misc
     diff_separators_background: *my_fg_light
@@ -465,14 +465,39 @@ attributes:
         bg: hl_5
         stripe: hl_5
 
-    # debugger
+    # DEBUGGER
     executionpoint_attributes:
         bg: hl004
         stripe: hl004
     breakpoint_attributes: { bg: *my_debug_brk_col, stripe: *my_debug_brk_col }
     evaluated_expression_attributes: { bg: *my_debug_exe_col }
-    debugger_inlined_values_modified: { fg: ult003 }
-    debugger_inlined_values: { fg: shd_2 }
+
+
+    debugger_inlined_values:
+        fg: &my_debug_inline_fg tone_3
+        bg: &my_debug_inline_bg dbg_1
+        ft: *italic
+
+    # it looks nice if it's the same for both. these colors should work with both
+    debugger_inlined_values_execution_line:
+        fg: *my_debug_inline_fg
+        bg: *my_debug_inline_bg
+        ft: *italic
+
+    debugger_inlined_values_modified:
+        fg: hyper_3
+        bg: *my_debug_inline_bg
+        ft: *bold
+
+    debugger_smart_step_into_selection:
+        bg: hlbg_1
+        effect: *bordered
+        effect_color: hyper_1
+
+    debugger_smart_step_into_target:
+        bg: hlbg_7
+        effect: *bordered
+        effect_color: hyper_7
 
     # code with me
     CodeWithMe.USER_1_MARKER: {bg: hyper_1}
@@ -522,6 +547,8 @@ attributes:
     console_system_output: {fg: *my_fg}
     console_normal_output: {fg: *my_fg}
     console_error_output: {fg: black, bg: bg_2}
+
+    # DEBUGGER
 
     # JS
     js.module_name: *namespace
