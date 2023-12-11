@@ -136,10 +136,9 @@ anchors:
         fg: *my_abstract_class_color
     class: &class
         fg: *my_class_color
-        ft: *italic
     type_alias: &type_alias
         fg: *my_typealias_color
-        effect: *underlined
+        effect: *italic
     object: &object
         fg: *my_object_color
     enum: &enum
