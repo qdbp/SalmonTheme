@@ -97,7 +97,7 @@ anchors:
     doc_markup: &doc_markup
         fg: tint_1
     punctuation: &punctuation
-        <<: *text
+        fg: *my_fg
     label: &label
         fg: *my_label_color
         ft: *bold
