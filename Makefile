@@ -1,5 +1,6 @@
 OUT_FN = $(RES_DIR)/Salmon.theme.json
 RES_DIR = src/main/resources/
+PGEN = palette-gen
 
 .PRECIOUS: build/palette.%.yaml
 .PRECIOUS: $(RES_DIR)/Restraint.%.yaml
@@ -20,23 +21,26 @@ day: build/Salmon.Day.theme.json $(RES_DIR)/Restraint.Day.xml
 	cp $(RES_DIR)/Restraint.Day.xml $(RES_DIR)/Restraint.xml
 
 build/palette.%.yaml: src/colorspec.yaml
-	palette-gen --out build/palette.yaml \
+	$(PGEN) \
 		palette \
-		src/colorspec.yaml \
+		--spec src/colorspec.yaml \
+		--out build/palette.yaml \
 		$* \
 		--html --cone
 
 $(RES_DIR)/Restraint.%.xml: build/palette.%.yaml src/scheme.yaml
 	echo "Processing $< to $@, stem is $*"
-	palette-gen \
-		--out $(RES_DIR)/Restraint.$*.xml \
-		scheme src/scheme.yaml \
-		build/palette.$*.yaml
+	$(PGEN) \
+		jb_scheme \
+		--spec src/scheme.yaml \
+		--palette build/palette.$*.yaml \
+		--out $(RES_DIR)/Restraint.$*.xml
 
 build/Salmon.%.theme.json: build/palette.%.yaml src/theme.yaml
 	echo "Processing $< to $@, stem is $*"
-	palette-gen \
+	$(PGEN) \
+		jb_theme \
+		--spec src/theme.yaml \
+		--palette build/palette.$*.yaml \
 		--out build/Salmon.$*.theme.json \
-		theme src/theme.yaml \
-		build/palette.$*.yaml \
 		--inline-colors
