@@ -627,10 +627,14 @@ attributes:
     kotlin_label: *label
 
     # types
+    kotlin_abstract_class: *abstract_class
+    kotlin_enum: *enum
     kotlin_object: *object
     kotlin_constructor: *call_constructor
     kotlin_enum_entry: *enum_member
-    kotlin_type_alias: *type_alias
+    kotlin_type_alias:
+        <<: *type_alias
+        ft: *italic
 
     # smartcasts
     kotlin_smart_cast_receiver:
