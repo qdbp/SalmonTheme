@@ -290,6 +290,10 @@ colors:
     documentation_color: *my_ide_bg
     doc_comment_link: *link
 
+    # Jupyter notebooks
+    jupyter.code_cell_background: bg
+    jupyter.editor_background: *my_ide_bg
+
 attributes:
     ### ALL LANGUAGES
 
